@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inovação tecnológica em Guarulhos — startups, hubs, projetos urbanos e feiras de tecnologia.">
+    <title>Inovação — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .tec-sub-hero {
+            background: linear-gradient(135deg, #065f46 0%, #07223b 60%, #1e3a5f 100%);
+            padding: 52px 24px 44px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .tec-sub-hero::before { content:"💡"; position:absolute; font-size:260px; opacity:.05; top:-20px; right:-10px; pointer-events:none; }
+        .tec-sub-hero .eyebrow { color:#6ee7b7; justify-content:center; margin-bottom:12px; }
+        .tec-sub-hero h2 { color:#fff; font-size:36px; margin-bottom:8px; }
+        .tec-sub-hero p  { color:#a7f3d0; font-size:15px; margin:0 auto; max-width:500px; }
+        .tec-nav { background:var(--surface); border-bottom:2px solid var(--line); position:sticky; top:var(--header-h); z-index:200; }
+        .tec-nav-inner { max-width:var(--container); margin:0 auto; padding:0 24px; display:flex; gap:0; overflow-x:auto; scrollbar-width:none; }
+        .tec-nav-inner::-webkit-scrollbar { display:none; }
+        .tec-nav-inner a { padding:13px 20px; font-size:13.5px; font-weight:600; color:var(--ink-500); white-space:nowrap; border-bottom:3px solid transparent; transition:color .2s,border-color .2s; display:flex; align-items:center; gap:7px; margin-bottom:-2px; }
+        .tec-nav-inner a:hover, .tec-nav-inner a.ativo { color:var(--navy-800); border-bottom-color:var(--terracotta-500); }
+        .dark .tec-nav-inner a.ativo { color:#cfe9f7; }
+
+        /* Cards de números/stats */
+        .stats-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; margin-bottom:36px; }
+        .stat-card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:22px 18px; text-align:center; box-shadow:var(--shadow-sm); }
+        .stat-card .snum { font-size:32px; font-weight:700; font-family:var(--font-head); color:var(--navy-800); line-height:1; }
+        .dark .stat-card .snum { color:#cfe9f7; }
+        .stat-card .slab { font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-500); margin-top:6px; }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar"><div class="topbar-inner"><span id="data"></span><span class="topbar-sep">•</span><span>Portal de notícias de Guarulhos e região</span></div></header>
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="eleicoes.html">Eleições 2026</a><a href="politica.html">Governo</a><a href="materia-bolsonaro-preso.html">Leis</a></div>
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="copa.html">Copa do Mundo 2026</a><a href="outros-esportes.html">Municipal</a><a href="basquete.html">Basquete</a></div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a><a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a></div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<section class="tec-sub-hero">
+    <span class="eyebrow">G.R.U Tecnologia</span>
+    <h2>💡 Inovação</h2>
+    <p>Guarulhos como polo de inovação — projetos, hubs, feiras e o ecossistema tecnológico da cidade.</p>
+</section>
+
+<nav class="tec-nav">
+    <div class="tec-nav-inner">
+        <a href="inovacao.html" class="ativo"><i class="fa-solid fa-lightbulb"></i> Inovação</a>
+        <a href="ia.html"><i class="fa-solid fa-robot"></i> IA</a>
+        <a href="startups.html"><i class="fa-solid fa-rocket"></i> Startups</a>
+        <a href="risco.html"><i class="fa-solid fa-shield-halved"></i> Segurança Digital</a>
+    </div>
+</nav>
+
+<!-- NÚMEROS -->
+<div class="copa-section">
+    <h2 class="copa-section-title"><i class="fa-solid fa-chart-line" style="color:var(--sky-500)"></i> Guarulhos em Números — Inovação 2026</h2>
+    <div class="stats-grid">
+        <div class="stat-card"><div class="snum">120+</div><div class="slab">Startups ativas</div></div>
+        <div class="stat-card"><div class="snum">R$ 2,1bi</div><div class="slab">Em investimentos tech</div></div>
+        <div class="stat-card"><div class="snum">18</div><div class="slab">Feiras de inovação/ano</div></div>
+        <div class="stat-card"><div class="snum">3</div><div class="slab">Hubs tecnológicos</div></div>
+        <div class="stat-card"><div class="snum">4.200</div><div class="slab">Empregos em tech</div></div>
+    </div>
+
+    <!-- MATÉRIAS -->
+    <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matérias de Inovação</h2>
+    <div class="materias-grid">
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Inovação</span>
+                <h3>Guarulhos inaugura GRU Tech Hub com espaço para 120 startups e laboratórios de inovação</h3>
+                <p>A Prefeitura inaugurou o maior hub de inovação do interior paulista, com coworking, mentorias, aceleradoras e laboratório de fabricação digital aberto à comunidade.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 2 mai. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Cidade Inteligente</span>
+                <h3>Guarulhos lança app de mobilidade urbana com rastreamento em tempo real de ônibus</h3>
+                <p>O aplicativo GRU Mobilidade permite que moradores acompanhem a localização dos coletivos e planejem rotas integradas com a Linha 13-Jade do metrô.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 18 abr. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Sustentabilidade</span>
+                <h3>Empresa de Guarulhos cria sistema de energia solar comunitária para bairros periféricos</h3>
+                <p>A startup SolarGRU instalou painéis em telhados de escolas e postos de saúde para gerar energia limpa e baratear a conta de luz dos moradores.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 10 abr. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">GRU Airport</span>
+                <h3>Aeroporto de Guarulhos se torna o primeiro do Brasil com check-in 100% biométrico</h3>
+                <p>A Aena implantou reconhecimento facial em todos os portões de embarque internacional do GRU, eliminando filas e agilizando o processo de boarding.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 28 mar. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Pesquisa</span>
+                <h3>UNIFIG e Mackenzie de Guarulhos lançam laboratório conjunto de biotecnologia e nanotecnologia</h3>
+                <p>As universidades criaram um polo de pesquisa que deve atrair R$ 40 milhões em financiamento nos próximos três anos para projetos de inovação aplicada.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 15 mar. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Indústria 4.0</span>
+                <h3>Polo industrial de Guarulhos investe R$ 300 milhões em automação e robótica em 2026</h3>
+                <p>As 12 maiores fábricas do Distrito Industrial de Guarulhos anunciaram programas de digitalização e automação que devem transformar o perfil dos empregos na região.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 5 fev. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col"><h3>G.R.U Notícias</h3><p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p><div class="social"><a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h4>Tecnologia</h4><a href="tecnologia.html">Hub de Tecnologia</a><a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a><a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a></div>
+        <div class="footer-col"><h4>Contato</h4><p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p><p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p><p><i class="fa-solid fa-location-dot"></i> Rua Dr. Ramos de Azevedo, 159 — Guarulhos, SP</p></div>
+        <div class="footer-col"><h4>Fale conosco</h4><form class="footer-form"><input type="text" placeholder="Seu nome" required><input type="email" placeholder="Seu email" required><textarea placeholder="Mensagem" required></textarea><button type="submit">Enviar</button></form></div>
+    </div>
+    <div class="footer-bottom">© 2026 G.R.U Notícias — Todos os direitos reservados.</div>
+</footer>
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/main.js"></script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>

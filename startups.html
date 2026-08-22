@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Startups de Guarulhos — empresas emergentes, investimentos e o ecossistema empreendedor da cidade.">
+    <title>Startups — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .tec-sub-hero { background:linear-gradient(135deg,#1e3a5f 0%,#07223b 60%,#065f46 100%); padding:52px 24px 44px; text-align:center; position:relative; overflow:hidden; }
+        .tec-sub-hero::before { content:"🚀"; position:absolute; font-size:260px; opacity:.05; top:-20px; right:-10px; pointer-events:none; }
+        .tec-sub-hero .eyebrow { color:#93c5fd; justify-content:center; margin-bottom:12px; }
+        .tec-sub-hero h2 { color:#fff; font-size:36px; margin-bottom:8px; }
+        .tec-sub-hero p  { color:#bfdbfe; font-size:15px; margin:0 auto; max-width:500px; }
+        .tec-nav { background:var(--surface); border-bottom:2px solid var(--line); position:sticky; top:var(--header-h); z-index:200; }
+        .tec-nav-inner { max-width:var(--container); margin:0 auto; padding:0 24px; display:flex; gap:0; overflow-x:auto; scrollbar-width:none; }
+        .tec-nav-inner::-webkit-scrollbar { display:none; }
+        .tec-nav-inner a { padding:13px 20px; font-size:13.5px; font-weight:600; color:var(--ink-500); white-space:nowrap; border-bottom:3px solid transparent; transition:color .2s,border-color .2s; display:flex; align-items:center; gap:7px; margin-bottom:-2px; }
+        .tec-nav-inner a:hover, .tec-nav-inner a.ativo { color:var(--navy-800); border-bottom-color:var(--terracotta-500); }
+        .dark .tec-nav-inner a.ativo { color:#cfe9f7; }
+
+        /* Cards de startups em destaque */
+        .startup-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 22px 22px 18px;
+            box-shadow: var(--shadow-sm);
+            transition: transform .3s, box-shadow .3s;
+        }
+        .startup-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .startup-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
+        .startup-logo { font-size:30px; width:52px; height:52px; border-radius:var(--radius-sm); background:var(--paper); display:flex; align-items:center; justify-content:center; border:1px solid var(--line); flex-shrink:0; }
+        .startup-header h3 { font-size:16px; margin:0 0 3px; }
+        .startup-header .seg { font-size:12px; color:var(--ink-500); font-weight:600; }
+        .startup-card p { font-size:13.5px; color:var(--ink-500); line-height:1.6; margin:0 0 14px; }
+        .startup-footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+        .aporte { font-size:12px; font-weight:700; color:#16a34a; background:#dcfce7; padding:4px 10px; border-radius:999px; }
+        .fase { font-size:12px; font-weight:600; color:var(--ink-500); }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar"><div class="topbar-inner"><span id="data"></span><span class="topbar-sep">•</span><span>Portal de notícias de Guarulhos e região</span></div></header>
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="eleicoes.html">Eleições 2026</a><a href="politica.html">Governo</a><a href="materia-bolsonaro-preso.html">Leis</a></div>
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="copa.html">Copa do Mundo 2026</a><a href="outros-esportes.html">Municipal</a><a href="basquete.html">Basquete</a></div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a><a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a></div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<section class="tec-sub-hero">
+    <span class="eyebrow">G.R.U Tecnologia</span>
+    <h2>🚀 Startups</h2>
+    <p>O ecossistema empreendedor de Guarulhos — as empresas emergentes que estão mudando a cidade.</p>
+</section>
+
+<nav class="tec-nav">
+    <div class="tec-nav-inner">
+        <a href="inovacao.html"><i class="fa-solid fa-lightbulb"></i> Inovação</a>
+        <a href="ia.html"><i class="fa-solid fa-robot"></i> IA</a>
+        <a href="startups.html" class="ativo"><i class="fa-solid fa-rocket"></i> Startups</a>
+        <a href="risco.html"><i class="fa-solid fa-shield-halved"></i> Segurança Digital</a>
+    </div>
+</nav>
+
+<!-- STARTUPS EM DESTAQUE -->
+<div class="copa-section">
+    <h2 class="copa-section-title"><i class="fa-solid fa-star" style="color:#f59e0b"></i> Startups de Guarulhos em Destaque</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-bottom:44px;">
+
+        <div class="startup-card">
+            <div class="startup-header">
+                <div class="img-slot-logo">
+                <i class="fa-solid fa-image"></i>
+                <input type="file" accept="image/*" aria-label="Logo da startup">
+            </div>
+                <div><h3>GRU Pay</h3><span class="seg">Fintech · Pagamentos</span></div>
+            </div>
+            <p>Plataforma de pagamentos instantâneos para pequenos comerciantes de Guarulhos, com taxas 60% menores que as maquininhas tradicionais e integração com Pix.</p>
+            <div class="startup-footer">
+                <span class="aporte">💰 R$ 8 mi — Seed</span>
+                <span class="fase">Fundada em 2024</span>
+            </div>
+        </div>
+
+        <div class="startup-card">
+            <div class="startup-header">
+                <div class="img-slot-logo">
+                <i class="fa-solid fa-image"></i>
+                <input type="file" accept="image/*" aria-label="Logo da startup">
+            </div>
+                <div><h3>SolarGRU</h3><span class="seg">Cleantech · Energia</span></div>
+            </div>
+            <p>Instala sistemas de energia solar em comunidades periféricas usando modelo de assinatura, sem investimento inicial pelos moradores. Já beneficiou 3.200 famílias.</p>
+            <div class="startup-footer">
+                <span class="aporte">💰 R$ 12 mi — Série A</span>
+                <span class="fase">Fundada em 2023</span>
+            </div>
+        </div>
+
+        <div class="startup-card">
+            <div class="startup-header">
+                <div class="img-slot-logo">
+                <i class="fa-solid fa-image"></i>
+                <input type="file" accept="image/*" aria-label="Logo da startup">
+            </div>
+                <div><h3>MobiGRU</h3><span class="seg">Mobility · Transporte</span></div>
+            </div>
+            <p>App de mobilidade urbana com rastreamento de ônibus em tempo real, planejamento de rotas e integração com a Linha 13-Jade. Mais de 180 mil usuários ativos.</p>
+            <div class="startup-footer">
+                <span class="aporte">💰 R$ 5 mi — Seed</span>
+                <span class="fase">Fundada em 2025</span>
+            </div>
+        </div>
+
+        <div class="startup-card">
+            <div class="startup-header">
+                <div class="img-slot-logo">
+                <i class="fa-solid fa-image"></i>
+                <input type="file" accept="image/*" aria-label="Logo da startup">
+            </div>
+                <div><h3>SaúdeGRU</h3><span class="seg">Healthtech · Saúde</span></div>
+            </div>
+            <p>Plataforma de telemedicina com especialistas em até 30 minutos, focada em bairros com pouca cobertura de planos de saúde. Parceira da Prefeitura de Guarulhos.</p>
+            <div class="startup-footer">
+                <span class="aporte">💰 R$ 6,5 mi — Série A</span>
+                <span class="fase">Fundada em 2024</span>
+            </div>
+        </div>
+
+        <div class="startup-card">
+            <div class="startup-header">
+                <div class="img-slot-logo">
+                <i class="fa-solid fa-image"></i>
+                <input type="file" accept="image/*" aria-label="Logo da startup">
+            </div>
+                <div><h3>LogiGRU</h3><span class="seg">Logtech · Logística</span></div>
+            </div>
+            <p>Conecta pequenos lojistas de Guarulhos a uma rede de entregadores autônomos com rotas otimizadas por IA. Reduz o custo de frete last-mile em até 45%.</p>
+            <div class="startup-footer">
+                <span class="aporte">💰 R$ 3 mi — Seed</span>
+                <span class="fase">Fundada em 2025</span>
+            </div>
+        </div>
+
+        <div class="startup-card">
+            <div class="startup-header">
+                <div class="img-slot-logo">
+                <i class="fa-solid fa-image"></i>
+                <input type="file" accept="image/*" aria-label="Logo da startup">
+            </div>
+                <div><h3>EduGRU</h3><span class="seg">Edtech · Educação</span></div>
+            </div>
+            <p>Plataforma de reforço escolar com tutores humanos e IA para alunos do ensino fundamental e médio de Guarulhos. Já alcançou 28 mil estudantes.</p>
+            <div class="startup-footer">
+                <span class="aporte">💰 R$ 4 mi — Seed</span>
+                <span class="fase">Fundada em 2024</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MATÉRIAS -->
+    <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matérias sobre Startups</h2>
+    <div class="materias-grid">
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Startups</span>
+                <h3>GRU Pay levanta R$ 8 milhões em rodada seed e mira expansão para outras cidades do ABC</h3>
+                <p>A fintech guarulhense, fundada por ex-funcionários de banco, conquistou investidores de São Paulo e já processa R$ 2 milhões por mês em transações.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 14 mai. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Cleantech</span>
+                <h3>SolarGRU fecha Série A de R$ 12 milhões e planeja levar energia solar a mais 10 mil famílias</h3>
+                <p>Com o aporte liderado por fundo de impacto nacional, a startup pretende dobrar sua operação em Guarulhos e expandir para São Bernardo do Campo.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 8 mai. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Prêmio</span>
+                <h3>Guarulhos é eleita a 3ª cidade do Brasil mais amigável para startups em 2026</h3>
+                <p>Ranking do Sebrae Nacional reconheceu os avanços da cidade em infraestrutura, incentivos fiscais e apoio municipal ao empreendedorismo tecnológico.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 22 abr. 2026</div>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col"><h3>G.R.U Notícias</h3><p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p><div class="social"><a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h4>Tecnologia</h4><a href="tecnologia.html">Hub de Tecnologia</a><a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a><a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a></div>
+        <div class="footer-col"><h4>Contato</h4><p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p><p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p><p><i class="fa-solid fa-location-dot"></i> Rua Dr. Ramos de Azevedo, 159 — Guarulhos, SP</p></div>
+        <div class="footer-col"><h4>Fale conosco</h4><form class="footer-form"><input type="text" placeholder="Seu nome" required><input type="email" placeholder="Seu email" required><textarea placeholder="Mensagem" required></textarea><button type="submit">Enviar</button></form></div>
+    </div>
+    <div class="footer-bottom">© 2026 G.R.U Notícias — Todos os direitos reservados.</div>
+</footer>
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/main.js"></script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>

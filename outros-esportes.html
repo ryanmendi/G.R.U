@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Esportes em Guarulhos — Jogos Regionais 2026, atletismo, ginástica, handebol e muito mais do esporte local.">
+    <title>Outros Esportes — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .outros-hero {
+            background: linear-gradient(135deg, #07223b 0%, #065f46 55%, #0a3d62 100%);
+            padding: 56px 24px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .outros-hero::before {
+            content: "🏅";
+            position: absolute;
+            font-size: 280px;
+            opacity: 0.05;
+            top: -30px; right: -20px;
+            pointer-events: none;
+        }
+        .outros-hero .eyebrow { color: #6ee7b7; justify-content: center; margin-bottom: 12px; }
+        .outros-hero h2 { color: #fff; font-size: 38px; margin-bottom: 8px; }
+        .outros-hero p  { color: #a7f3d0; font-size: 16px; margin: 0 auto; max-width: 520px; }
+
+        /* Banner Jogos Regionais */
+        .jogos-banner {
+            background: linear-gradient(120deg, #065f46 0%, #07223b 100%);
+            border-radius: var(--radius-lg);
+            padding: 36px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+        }
+        .jogos-banner h2 { color: #6ee7b7; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+        .jogos-banner h3 { color: #fff; font-size: 26px; margin-bottom: 8px; }
+        .jogos-banner p  { color: #a7f3d0; font-size: 14.5px; max-width: 460px; margin-bottom: 20px; }
+        .jogos-banner-stats {
+            flex-shrink: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .stat-box {
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--radius-sm);
+            padding: 14px 18px;
+            text-align: center;
+        }
+        .stat-box .stat-num { font-size: 28px; font-weight: 700; color: #fbbf24; font-family: var(--font-head); line-height: 1; }
+        .stat-box .stat-lab { font-size: 11px; font-weight: 600; color: #a7f3d0; text-transform: uppercase; letter-spacing: .05em; margin-top: 4px; }
+
+        /* Quadro de medalhas */
+        .medalhas-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+        .medalhas-table th { padding: 9px 12px; text-align: center; color: var(--ink-500); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; background: var(--paper); border-bottom: 2px solid var(--line); }
+        .medalhas-table th:nth-child(2) { text-align: left; }
+        .medalhas-table td { padding: 10px 12px; text-align: center; border-bottom: 1px solid var(--line); font-weight: 600; }
+        .medalhas-table td:nth-child(2) { text-align: left; font-weight: 600; }
+        .medalhas-table tr:last-child td { border-bottom: none; }
+        .medalhas-table .dest-row { background: rgba(34,197,94,0.07); }
+        .ouro  { color: #b45309; }
+        .prata { color: #64748b; }
+        .bronze{ color: #92400e; }
+        .total-pts { font-weight: 700; color: var(--navy-800); }
+        .dark .total-pts { color: #cfe9f7; }
+
+        /* Lista de conquistas por modalidade */
+        .modalidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .modal-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .modal-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+        .modal-info h4 { font-size: 14.5px; margin-bottom: 4px; }
+        .modal-info p  { font-size: 13px; color: var(--ink-500); margin: 0; line-height: 1.5; }
+        .medal-pills { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+        .medal-pill { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
+        .medal-pill.o { background: #fef3c7; color: #b45309; }
+        .medal-pill.p { background: #f1f5f9; color: #475569; }
+        .medal-pill.b { background: #fdf2e8; color: #92400e; }
+
+        @media (max-width: 760px) {
+            .jogos-banner { flex-direction: column; padding: 28px 22px; }
+            .jogos-banner-stats { grid-template-columns: repeat(4,1fr); }
+        }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar"><div class="topbar-inner"><span id="data"></span><span class="topbar-sep">•</span><span>Portal de notícias de Guarulhos e região</span></div></header>
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política </a>
+                
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="copa.html">Copa do Mundo 2026</a>
+                    <a href="outros-esportes.html">Municipal</a>
+                    <a href="basquete.html">Basquete</a>
+                    
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a>
+                    <a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a>
+                </div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="outros-hero">
+    <span class="eyebrow">G.R.U Esportes · Guarulhos</span>
+    <h2>🏅 Esporte em Guarulhos</h2>
+    <p>Cobertura dos esportes que movimentam a nossa cidade — das pistas aos tatames, dos campos à quadra.</p>
+</section>
+
+<!-- BANNER JOGOS REGIONAIS -->
+<div class="copa-section" style="padding-bottom:0;">
+    <div class="jogos-banner">
+        <div>
+            <h2>🏆 68ª Jogos Regionais 2026</h2>
+            <h3>Guarulhos faz história: 4º lugar geral e melhor campanha em 16 anos!</h3>
+            <p>Com 253 atletas em 28 modalidades, Guarulhos subiu da 9ª para a 4ª colocação nos Jogos Regionais do Estado de São Paulo, conquistando 54 medalhas.</p>
+            <a href="materia-jogos-regionais.html" class="btn" style="background:#6ee7b7;color:#065f46;">Ver matéria completa <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="jogos-banner-stats">
+            <div class="stat-box"><div class="stat-num">4º</div><div class="stat-lab">Lugar Geral</div></div>
+            <div class="stat-box"><div class="stat-num">54</div><div class="stat-lab">Medalhas</div></div>
+            <div class="stat-box"><div class="stat-num">11🥇</div><div class="stat-lab">Ouros</div></div>
+            <div class="stat-box"><div class="stat-num">28</div><div class="stat-lab">Modalidades</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- QUADRO DE MEDALHAS JOGOS REGIONAIS -->
+<div class="copa-section">
+    <h2 class="copa-section-title"><i class="fa-solid fa-medal" style="color:#b45309"></i> Quadro de Medalhas — Jogos Regionais 2026</h2>
+
+    <div style="border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:28px;">
+        <table class="medalhas-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cidade</th>
+                    <th>🥇 Ouro</th>
+                    <th>🥈 Prata</th>
+                    <th>🥉 Bronze</th>
+                    <th>Total</th>
+                    <th>Pts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>São Paulo</td><td class="ouro">28</td><td class="prata">22</td><td class="bronze">18</td><td>68</td><td class="total-pts">312</td></tr>
+                <tr><td>2</td><td>Campinas</td><td class="ouro">19</td><td class="prata">16</td><td class="bronze">21</td><td>56</td><td class="total-pts">228</td></tr>
+                <tr><td>3</td><td>Santos</td><td class="ouro">14</td><td class="prata">20</td><td class="bronze">17</td><td>51</td><td class="total-pts">196</td></tr>
+                <tr class="dest-row"><td><strong>4</strong></td><td><strong>🌟 Guarulhos</strong></td><td class="ouro"><strong>11</strong></td><td class="prata"><strong>18</strong></td><td class="bronze"><strong>25</strong></td><td><strong>54</strong></td><td class="total-pts"><strong>148</strong></td></tr>
+                <tr><td>5</td><td>São Bernardo do Campo</td><td class="ouro">10</td><td class="prata">14</td><td class="bronze">19</td><td>43</td><td class="total-pts">138</td></tr>
+                <tr><td>6</td><td>Ribeirão Preto</td><td class="ouro">9</td><td class="prata">12</td><td class="bronze">16</td><td>37</td><td class="total-pts">121</td></tr>
+                <tr><td>7</td><td>Sorocaba</td><td class="ouro">7</td><td class="prata">11</td><td class="bronze">14</td><td>32</td><td class="total-pts">104</td></tr>
+                <tr><td>8</td><td>Santo André</td><td class="ouro">6</td><td class="prata">10</td><td class="bronze">13</td><td>29</td><td class="total-pts">94</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="color:var(--ink-500);font-size:13px;"><i class="fa-solid fa-circle-info"></i> Em 2025, Guarulhos havia terminado em 9º lugar. O salto para o 4º representa a melhor campanha da cidade nos últimos 16 anos.</p>
+</div>
+
+<!-- CONQUISTAS POR MODALIDADE -->
+<div class="copa-section" style="background:var(--paper);padding-top:44px;padding-bottom:44px;max-width:100%;">
+    <div style="max-width:var(--container);margin:0 auto;padding:0 24px;">
+    <h2 class="copa-section-title"><i class="fa-solid fa-trophy" style="color:#f59e0b"></i> Conquistas de Guarulhos por Modalidade</h2>
+
+    <div class="modalidades-grid">
+
+        <div class="modal-card">
+            <div class="modal-icon">🤸</div>
+            <div class="modal-info">
+                <h4>Ginástica Artística Feminina</h4>
+                <p>Título por equipes + medalhas individuais. Uma das grandes forças de Guarulhos no torneio.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill o">🥇 Ouro (equipes)</span>
+                    <span class="medal-pill o">🥇 Ouro (ind.)</span>
+                    <span class="medal-pill p">🥈 Prata</span>
+                    <span class="medal-pill b">🥉 Bronze</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">🤾</div>
+            <div class="modal-info">
+                <h4>Handebol Masculino</h4>
+                <p>Campeão da modalidade coletiva, resultado histórico para o esporte da cidade.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill o">🥇 Ouro</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">🏓</div>
+            <div class="modal-info">
+                <h4>Tênis de Mesa</h4>
+                <p>Miguel Massuda conquistou o ouro no individual masculino com atuação dominante.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill o">🥇 Miguel Massuda</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">⚽</div>
+            <div class="modal-info">
+                <h4>Futebol Masculino</h4>
+                <p>Representado pela parceria Flamengo/Guarulhos, a equipe chegou à final e ficou com a prata.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill p">🥈 Prata</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">🏀</div>
+            <div class="modal-info">
+                <h4>Basquete Feminino</h4>
+                <p>Prata na modalidade feminina, com atuação de destaque em toda a competição.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill p">🥈 Prata</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">🥋</div>
+            <div class="modal-info">
+                <h4>Karatê — Kata por Equipes</h4>
+                <p>Prata no kata masculino por equipes, confirmando a força do karatê guarulhense.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill p">🥈 Prata (equipes)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">⚽</div>
+            <div class="modal-info">
+                <h4>Futsal Masculino</h4>
+                <p>Prata na modalidade de futsal após campanha sólida ao longo de todo o torneio.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill p">🥈 Prata</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">🏀</div>
+            <div class="modal-info">
+                <h4>Basquete Masculino & 3×3</h4>
+                <p>Bronze nas duas modalidades do basquete masculino, incluindo o formato olímpico 3×3.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill b">🥉 Masculino</span>
+                    <span class="medal-pill b">🥉 3×3</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">🏐</div>
+            <div class="modal-info">
+                <h4>Vôlei Masculino</h4>
+                <p>Bronze no vôlei masculino, com equipe jovem e promissora representando a cidade.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill b">🥉 Bronze</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">🎀</div>
+            <div class="modal-info">
+                <h4>Ginástica Rítmica</h4>
+                <p>Bronze na ginástica rítmica, modalidade de grande tradição em Guarulhos.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill b">🥉 Bronze</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">🥊</div>
+            <div class="modal-info">
+                <h4>Judô, Atletismo & Tênis</h4>
+                <p>Medalhas conquistadas também em judô, atletismo e tênis ao longo dos Jogos Regionais.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill b">🥉 Múltiplas</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-card">
+            <div class="modal-icon">🤸</div>
+            <div class="modal-info">
+                <h4>Capoeira</h4>
+                <p>A capoeira guarulhense brilhou e garantiu mais pódios para a delegação da cidade.</p>
+                <div class="medal-pills">
+                    <span class="medal-pill b">🥉 Bronze</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</div>
+
+<!-- MATÉRIAS -->
+<div class="copa-section">
+    <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matérias Esportivas de Guarulhos</h2>
+    <div class="materias-grid">
+
+        <a href="materia-jogos-regionais.html" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Jogos Regionais 2026</span>
+                <h3>Histórico! Guarulhos conquista 4º lugar nos Jogos Regionais — melhor campanha em 16 anos</h3>
+                <p>Com 253 atletas, 28 modalidades e 54 medalhas, a delegação de Guarulhos subiu da 9ª para a 4ª colocação, registrando a melhor campanha desde 2010.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 24 jul. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+
+        <a href="materia-ginastica-gru.html" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Ginástica Artística</span>
+                <h3>Ginástica artística feminina de Guarulhos conquista ouro por equipes e brilha nos individuais</h3>
+                <p>O ginásio Bonifácio Cardoso, que formou atletas olímpicas como Rebeca Andrade, segue produzindo grandes talentos para o esporte brasileiro.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 22 jul. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="materia-handebol-gru.html" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Handebol</span>
+                <h3>Handebol masculino de Guarulhos é campeão dos Jogos Regionais 2026</h3>
+                <p>A equipe de handebol representou com brilhantismo a cidade e sagrou-se campeã em uma das modalidades coletivas do torneio estadual.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 21 jul. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+
+    </div>
+</div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>G.R.U Notícias</h3>
+                <p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p>
+                <div class="social">
+                    <a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Editorias</h4>
+                <a href="index.html">Início</a>
+                <a href="inovacao.html">Inovação</a>
+                <a href="ia.html">Inteligência Artificial</a>
+                <a href="startups.html">Startups</a>
+                <a href="entretenimento.html">Entretenimento</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p>
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p>
+                <p><i class="fa-solid fa-location-dot"></i> Rua Doutor Ramos de Azevedo, 159, Guarulhos, São Paulo, 07012-020</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Fale conosco</h4>
+                <form class="footer-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu email" required>
+                    <textarea placeholder="Mensagem" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 G.R.U Notícias — Todos os direitos reservados.
+        </div>
+    </footer>
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>

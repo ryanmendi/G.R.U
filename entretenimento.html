@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fique por dentro das novidades de entretenimento de Guarulhos e divirta-se com nosso jogo.">
+    <title>Entretenimento — G.R.U Notícias</title>
+
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <span id="data"></span>
+            <span class="topbar-sep">•</span>
+            <span>Portal de notícias de Guarulhos e região</span>
+        </div>
+    </header>
+
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo-area">
+                <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+                <div class="logo-text">
+                    <h1>G.R.U</h1>
+                    <p>Gerando Raízes Urbanas</p>
+                </div>
+            </a>
+
+            <nav id="menu">
+                <a href="index.html">Início</a>
+
+                <div class="dropdown">
+                    <a href="politica.html">Política </a>
+
+                </div>
+
+                <div class="dropdown">
+                    <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="copa.html">Copa do Mundo 2026</a>
+                    <a href="outros-esportes.html">Municipal</a>
+                    <a href="basquete.html">Basquete</a>
+                    
+                </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="inovacao.html">Inovação</a>
+                        <a href="ia.html">Inteligência Artificial</a>
+                        <a href="startups.html">Startups</a>
+                        <a href="risco.html">Segurança Digital</a>
+                    </div>
+                </div>
+
+                <a href="entretenimento.html">Entretenimento</a>
+            </nav>
+
+            <div class="actions">
+                <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Alternar tema claro/escuro">🌙</button>
+                <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <div class="page-hero">
+        <span class="eyebrow">G.R.U Entretenimento</span>
+        <h2>🎬 Entretenimento</h2>
+        <p>Fique por dentro das novidades culturais de Guarulhos e divirta-se com nosso jogo.</p>
+    </div>
+
+    <div class="page-content">
+        <div class="cards">
+
+            <!-- CARD NOTÍCIA -->
+            <div class="card">
+                <img src="img/homemAranha4.jpg" alt="Homem-Aranha 4">
+                <div class="card-content">
+                    <span>Entretenimento</span>
+                    <h3>Homem-Aranha 4: </h3>
+                    <p>
+                        O aguardado filme "Homem-Aranha 4" promete trazer uma nova aventura do herói aracnídeo, com
+                        efeitos visuais impressionantes e uma trama envolvente que vai prender a atenção dos fãs.
+                    </p>
+                    <a href="noticia.html" class="btn">Ler notícia <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- CARD JOGO -->
+            <div class="card">
+                <img src="img/nxc11C.png" alt="Jogo Flappy Bird">
+                <div class="card-content">
+                    <span>Game</span>
+                    <h3>Jogue agora: Flappy Bird</h3>
+                    <p>
+                        Jogue neste momento o jogo Flappy Bird, onde o desafio é passar pelos canos e sobreviver.
+                        Teste seu reflexo e tente alcançar a maior pontuação possível.
+                    </p>
+                    <a href="flappy.html" class="btn">Abrir jogo <i class="fa-solid fa-gamepad"></i></a>
+                </div>
+            </div>
+
+                        <div class="card">
+                <img src="img/rodeio.jpg" alt="Itaquá Rodeio Fest 2026">
+                <div class="card-content">
+                    <span>Entretenimento</span>
+                    <h3>Itaquá Rodeio Fest 2026</h3>
+                    <p>
+                        Tradição, música e muita diversão em Itaquaquecetuba. O Itaquá Rodeio Fest já faz parte do
+                        calendário de grandes eventos da cidade.
+                        Prepare-se para curtir shows, competições e uma experiência única no mundo do rodeio.
+                    </p>
+                    <a href="rodeio.html" class="btn">Ler notícia <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+
+            
+        </div>
+    </div>
+
+        <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>G.R.U Notícias</h3>
+                <p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p>
+                <div class="social">
+                    <a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Editorias</h4>
+                <a href="index.html">Início</a>
+                <a href="inovacao.html">Inovação</a>
+                <a href="ia.html">Inteligência Artificial</a>
+                <a href="startups.html">Startups</a>
+                <a href="entretenimento.html">Entretenimento</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p>
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p>
+                <p><i class="fa-solid fa-location-dot"></i> Rua Doutor Ramos de Azevedo, 159, Guarulhos, São Paulo, 07012-020</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Fale conosco</h4>
+                <form class="footer-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu email" required>
+                    <textarea placeholder="Mensagem" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 G.R.U Notícias — Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+
+</html>

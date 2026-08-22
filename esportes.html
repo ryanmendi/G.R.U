@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Esportes no G.R.U Notícias — Copa do Mundo 2026 encerrada. Espanha bicampeã!">
+    <title>Esportes — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .esportes-hero {
+            background: linear-gradient(135deg, #07223b 0%, #1a3a0f 60%, #0a3d62 100%);
+            padding: 56px 24px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .esportes-hero::before {
+            content: "🏆";
+            position: absolute;
+            font-size: 260px;
+            opacity: 0.05;
+            top: -30px; right: -20px;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .esportes-hero .eyebrow { color: #ffd566; justify-content: center; margin-bottom: 12px; }
+        .esportes-hero h2 { color: #fff; font-size: 38px; margin-bottom: 8px; }
+        .esportes-hero p  { color: #b8d4e8; font-size: 16px; margin: 0 auto; max-width: 480px; }
+
+        .copa-banner {
+            background: linear-gradient(120deg, #b8860b 0%, #3a1000 100%);
+            border-radius: var(--radius-lg);
+            padding: 38px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+        }
+        .copa-banner-texto h2 { color: #ffd700; font-size: 28px; margin-bottom: 8px; }
+        .copa-banner-texto p  { color: #e8d5a0; font-size: 15px; max-width: 460px; margin-bottom: 22px; }
+        .copa-banner-icon { font-size: 90px; line-height: 1; flex-shrink: 0; }
+
+        @media (max-width: 700px) {
+            .copa-banner { flex-direction: column; text-align: center; padding: 30px 24px; }
+            .copa-banner-icon { font-size: 60px; }
+            .copa-banner-texto h2 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <span id="data"></span>
+        <span class="topbar-sep">•</span>
+        <span>Portal de notícias de Guarulhos e região</span>
+    </div>
+</header>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política</a>
+                
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="copa.html">Copa do Mundo 2026</a>
+                    <a href="outros-esportes.html">Municipal</a>
+                    <a href="basquete.html">Basquete</a>
+                    
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="inovacao.html">Inovação</a>
+                    <a href="ia.html">Inteligência Artificial</a>
+                    <a href="startups.html">Startups</a>
+                    <a href="risco.html">Segurança Digital</a>
+                </div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="esportes-hero">
+    <span class="eyebrow">G.R.U Esportes</span>
+    <h2>⚽ Esportes</h2>
+    <p>Cobertura da Copa do Mundo 2026 — encerrada em 19 de julho.</p>
+</section>
+
+<!-- BANNER COPA ENCERRADA -->
+<div class="copa-section" style="padding-bottom:0;">
+    <div class="copa-banner">
+        <div class="copa-banner-texto">
+            <h2>🏆 Espanha Bicampeã da Copa do Mundo 2026</h2>
+            <p>A Fúria venceu a Argentina por 1×0 na prorrogação no MetLife Stadium. Ferran Torres marcou o gol do título aos 106 minutos. Confira o chaveamento completo com todos os resultados reais.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="materia-espanha-campea.html" class="btn" style="background:#ffd700;color:#3a2000;">Ver matéria <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="copa.html" class="btn" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);">Chaveamento completo <i class="fa-solid fa-diagram-project"></i></a>
+            </div>
+        </div>
+        <div class="copa-banner-icon">🇪🇸🏆</div>
+    </div>
+</div>
+
+<!-- ÚNICA MATÉRIA -->
+<div class="copa-section">
+    <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matéria em destaque</h2>
+    <div style="max-width:620px;">
+        <a href="materia-espanha-campea.html" class="materia-card" style="display:block;">
+            <img src="img/espanha-campea-copa-2026-scaled-e1784502419743.jpg" alt="Espanha bicampeã da Copa do Mundo 2026 - futebol" style="width:100%;height:220px;object-fit:cover;border-radius:var(--radius-md) var(--radius-md) 0 0;">
+            <div class="materia-body">
+                <span class="badge">Copa 2026 · Campeã</span>
+                <h3 style="font-size:20px;margin:12px 0 10px;">Espanha é bicampeã! Ferran Torres decide na prorrogação e elimina Argentina na final</h3>
+                <p>Com gol de Ferran Torres aos 106 minutos, a Espanha derrotou a Argentina por 1×0 no MetLife Stadium e conquistou o segundo título mundial da história. A final marcou a despedida de Lionel Messi das Copas do Mundo.</p>
+                <div class="materia-meta">
+                    <i class="fa-regular fa-calendar"></i> 19 jul. 2026
+                    <span>•</span>
+                    <i class="fa-solid fa-location-dot"></i> MetLife Stadium, Nova Jersey
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>G.R.U Notícias</h3>
+                <p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p>
+                <div class="social">
+                    <a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Editorias</h4>
+                <a href="index.html">Início</a>
+                <a href="inovacao.html">Inovação</a>
+                <a href="ia.html">Inteligência Artificial</a>
+                <a href="startups.html">Startups</a>
+                <a href="entretenimento.html">Entretenimento</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p>
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p>
+                <p><i class="fa-solid fa-location-dot"></i> Rua Doutor Ramos de Azevedo, 159, Guarulhos, São Paulo, 07012-020</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Fale conosco</h4>
+                <form class="footer-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu email" required>
+                    <textarea placeholder="Mensagem" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 G.R.U Notícias — Todos os direitos reservados.
+        </div>
+    </footer>
+
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>

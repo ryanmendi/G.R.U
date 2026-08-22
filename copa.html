@@ -1,0 +1,763 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cobertura completa da Copa do Mundo FIFA 2026 — grupos, chaveamento e resultados reais. Espanha bicampeã!">
+    <title>Copa do Mundo 2026 — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- BANNER CAMPEÃO --- */
+        .campea-banner {
+            background: linear-gradient(135deg, #b8860b 0%, #ffd700 40%, #b8860b 100%);
+            text-align: center;
+            padding: 22px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #3a2000;
+            letter-spacing: 0.03em;
+        }
+        .campea-banner span.trophy { font-size: 26px; }
+        .campea-banner a {
+            background: #3a2000;
+            color: #ffd700;
+            padding: 7px 18px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-left: 12px;
+            transition: background 0.2s;
+        }
+        .campea-banner a:hover { background: #1a0f00; }
+
+        /* --- CHAVE REAL (bracket visual) --- */
+        .bracket-round-label {
+            text-align: center;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--ink-500);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .bracket-round-label.destaque {
+            color: #b8860b;
+            border-color: #ffd700;
+        }
+
+        .b-match {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin: 4px 6px;
+        }
+
+        .b-match.final-match {
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 18px rgba(255,215,0,0.25);
+        }
+
+        .b-team {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            gap: 7px;
+            border-bottom: 1px solid var(--line);
+        }
+        .b-team:last-of-type { border-bottom: none; }
+        .b-team .b-flag { font-size: 15px; flex-shrink: 0; }
+        .b-team .b-nome { flex: 1; }
+        .b-team .b-gol { font-weight: 700; min-width: 18px; text-align: right; font-size: 14px; }
+
+        .b-team.vencedor { background: rgba(34,197,94,0.10); }
+        .b-team.vencedor .b-gol { color: #16a34a; }
+        .b-team.perdedor { opacity: 0.55; }
+
+        .b-match-data {
+            font-size: 11px;
+            color: var(--ink-500);
+            text-align: center;
+            padding: 4px 6px;
+            background: var(--paper);
+            border-top: 1px solid var(--line);
+        }
+
+        .b-match-data.final-data {
+            background: #fefce8;
+            color: #854d0e;
+            font-weight: 700;
+        }
+
+        /* tag prorrogação / pênaltis */
+        .b-tag {
+            font-size: 10px;
+            font-weight: 700;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-left: 4px;
+        }
+
+        /* --- GRUPOS REAIS --- */
+        .grupo-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .grupo-header {
+            background: var(--navy-800);
+            color: #fff;
+            padding: 9px 14px;
+            font-size: 13.5px;
+            font-weight: 700;
+        }
+        .grupo-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .grupo-table th {
+            padding: 6px 8px;
+            text-align: center;
+            color: var(--ink-500);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+        }
+        .grupo-table th:first-child { text-align: left; }
+        .grupo-table td { padding: 8px 8px; text-align: center; border-bottom: 1px solid var(--line); }
+        .grupo-table td:first-child { text-align: left; font-weight: 600; }
+        .grupo-table tr:last-child td { border-bottom: none; }
+
+        /* verde = classificados (2 primeiros) */
+        .grupo-table tr:nth-child(-n+2) td:first-child { border-left: 3px solid #22c55e; }
+        /* azul = melhor 3o (apenas alguns grupos - adicionamos manualmente) */
+        .grupo-table tr.terceiro-ok td:first-child { border-left: 3px solid var(--sky-500); }
+
+        .pts { font-weight: 700; color: var(--navy-800); }
+        .dark .pts { color: #cfe9f7; }
+
+        .pais-flag { display: inline-flex; align-items: center; gap: 6px; }
+        .pais-flag .flag { font-size: 16px; }
+
+        /* nota final */
+        .nota-final {
+            background: linear-gradient(135deg, #07223b, #1a4c2e);
+            color: white;
+            text-align: center;
+            padding: 44px 24px;
+            margin-top: 0;
+        }
+        .nota-final h2 { color: #ffd700; font-size: 32px; margin-bottom: 8px; }
+        .nota-final p  { color: #b8d4e8; font-size: 15px; max-width: 500px; margin: 0 auto 22px; }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<!-- BANNER CAMPEÃO (topo fixo abaixo da topbar) -->
+<div class="campea-banner">
+    <span class="trophy">🏆</span>
+    <span>ESPANHA BICAMPEÃ! Venceu a Argentina por 1×0 na prorrogação — Final em Nova Jersey, 19/07/2026</span>
+    <a href="materia-espanha-campea.html">Ver matéria</a>
+</div>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <span id="data"></span>
+        <span class="topbar-sep">•</span>
+        <span>Portal de notícias de Guarulhos e região</span>
+    </div>
+</header>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política </a>
+
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="copa.html">Copa do Mundo 2026</a>
+                    <a href="outros-esportes.html">Municipal</a>
+                    <a href="basquete.html">Basquete</a>
+                    
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="inovacao.html">Inovação</a>
+                    <a href="ia.html">Inteligência Artificial</a>
+                    <a href="startups.html">Startups</a>
+                    <a href="risco.html">Segurança Digital</a>
+                </div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="copa-hero">
+    <span class="eyebrow">G.R.U Esportes · Encerrado</span>
+    <h1>🏆 Copa do Mundo FIFA 2026</h1>
+    <p>EUA · Canadá · México &nbsp;|&nbsp; 11 jun – 19 jul 2026 &nbsp;|&nbsp; <strong style="color:#ffd566">Campeã: 🇪🇸 Espanha</strong></p>
+    <div class="copa-sedes">
+        <span class="copa-sede">🇺🇸 Estados Unidos</span>
+        <span class="copa-sede">🇨🇦 Canadá</span>
+        <span class="copa-sede">🇲🇽 México</span>
+        <span class="copa-sede">⚽ 48 Seleções</span>
+        <span class="copa-sede">📅 104 Jogos</span>
+    </div>
+</section>
+
+<!-- NAV INTERNA -->
+<nav class="copa-nav">
+    <div class="copa-nav-inner">
+        <a href="#grupos" class="ativo"><i class="fa-solid fa-table"></i> Grupos</a>
+        <a href="#chaveamento"><i class="fa-solid fa-diagram-project"></i> Chaveamento</a>
+        <a href="#materia"><i class="fa-solid fa-newspaper"></i> Matéria</a>
+    </div>
+</nav>
+
+<!-- ===== GRUPOS ===== -->
+<section class="copa-section" id="grupos">
+    <h2 class="copa-section-title"><i class="fa-solid fa-table" style="color:var(--sky-500)"></i> Fase de Grupos — Classificação Final</h2>
+    <div class="legend" style="margin-bottom:18px;">
+        <span class="legend-item"><span class="legend-dot classificado"></span> Classificado ao mata-mata (1º e 2º)</span>
+        <span class="legend-item"><span class="legend-dot repescagem"></span> Melhor 3º colocado (classificado)</span>
+    </div>
+
+    <div class="grupos-grid">
+
+        <!-- GRUPO A -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo A</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇲🇽</span> México</span></td><td>3</td><td>3</td><td>0</td><td>0</td><td>+6</td><td class="pts">9</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇿🇦</span> África do Sul</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>+1</td><td class="pts">4</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇰🇷</span> Coreia do Sul</span></td><td>3</td><td>1</td><td>0</td><td>2</td><td>-1</td><td class="pts">3</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇨🇿</span> Rep. Tcheca</span></td><td>3</td><td>0</td><td>1</td><td>2</td><td>-6</td><td class="pts">1</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO B -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo B</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇨🇭</span> Suíça</span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>+5</td><td class="pts">7</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇨🇦</span> Canadá</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>+5</td><td class="pts">4</td></tr>
+                    <tr class="terceiro-ok"><td><span class="pais-flag"><span class="flag">🇧🇦</span> Bósnia-Her.</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>+2</td><td class="pts">4</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇶🇦</span> Catar</span></td><td>3</td><td>0</td><td>0</td><td>3</td><td>-12</td><td class="pts">0</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO C -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo C</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇧🇷</span> Brasil</span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>+5</td><td class="pts">7</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇲🇦</span> Marrocos</span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>+4</td><td class="pts">7</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">es</span> Escócia</span></td><td>3</td><td>1</td><td>0</td><td>2</td><td>-2</td><td class="pts">3</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇭🇹</span> Haiti</span></td><td>3</td><td>0</td><td>0</td><td>3</td><td>-7</td><td class="pts">0</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO D -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo D</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇺🇸</span> EUA</span></td><td>3</td><td>2</td><td>0</td><td>1</td><td>+4</td><td class="pts">6</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇦🇺</span> Austrália</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>+2</td><td class="pts">4</td></tr>
+                    <tr class="terceiro-ok"><td><span class="pais-flag"><span class="flag">🇵🇾</span> Paraguai</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>-2</td><td class="pts">4</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇹🇷</span> Turquia</span></td><td>3</td><td>1</td><td>0</td><td>2</td><td>-4</td><td class="pts">3</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO E -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo E</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇩🇪</span> Alemanha</span></td><td>3</td><td>2</td><td>0</td><td>1</td><td>+8</td><td class="pts">6</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇨🇮</span> Costa do Marfim</span></td><td>3</td><td>2</td><td>0</td><td>1</td><td>+1</td><td class="pts">6</td></tr>
+                    <tr class="terceiro-ok"><td><span class="pais-flag"><span class="flag">🇪🇨</span> Equador</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>+1</td><td class="pts">4</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇨🇼</span> Curaçao</span></td><td>3</td><td>1</td><td>0</td><td>2</td><td>-10</td><td class="pts">3</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO F -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo F</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇳🇱</span> Holanda</span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>+9</td><td class="pts">7</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇯🇵</span> Japão</span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>+5</td><td class="pts">7</td></tr>
+                    <tr class="terceiro-ok"><td><span class="pais-flag"><span class="flag">🇸🇪</span> Suécia</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>+2</td><td class="pts">4</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇹🇳</span> Tunísia</span></td><td>3</td><td>0</td><td>0</td><td>3</td><td>-16</td><td class="pts">0</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO G -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo G</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇧🇪</span> Bélgica</span></td><td>3</td><td>1</td><td>2</td><td>0</td><td>+4</td><td class="pts">5</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇪🇬</span> Egito</span></td><td>3</td><td>1</td><td>2</td><td>0</td><td>+2</td><td class="pts">5</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇮🇷</span> Irã</span></td><td>3</td><td>0</td><td>3</td><td>0</td><td>0</td><td class="pts">3</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇳🇿</span> Nova Zelândia</span></td><td>3</td><td>0</td><td>1</td><td>2</td><td>-6</td><td class="pts">1</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO H — CAMPEÃ -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo H — Espanha 🏆</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇪🇸</span> <strong>Espanha</strong></span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>+5</td><td class="pts">7</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇨🇻</span> Cabo Verde</span></td><td>3</td><td>0</td><td>3</td><td>0</td><td>0</td><td class="pts">3</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇺🇾</span> Uruguai</span></td><td>3</td><td>0</td><td>2</td><td>1</td><td>-1</td><td class="pts">2</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇸🇦</span> Arábia Saudita</span></td><td>3</td><td>0</td><td>1</td><td>2</td><td>-4</td><td class="pts">1</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO I -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo I</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇫🇷</span> França</span></td><td>3</td><td>3</td><td>0</td><td>0</td><td>+9</td><td class="pts">9</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇳🇴</span> Noruega</span></td><td>3</td><td>2</td><td>0</td><td>1</td><td>+1</td><td class="pts">6</td></tr>
+                    <tr class="terceiro-ok"><td><span class="pais-flag"><span class="flag">🇸🇳</span> Senegal</span></td><td>3</td><td>1</td><td>0</td><td>2</td><td>-1</td><td class="pts">3</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇮🇶</span> Iraque</span></td><td>3</td><td>0</td><td>0</td><td>3</td><td>-9</td><td class="pts">0</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO J — ARGENTINA (vice-campeã) -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo J — Argentina 🥈</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇦🇷</span> Argentina</span></td><td>3</td><td>3</td><td>0</td><td>0</td><td>+8</td><td class="pts">9</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇦🇹</span> Áustria</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>+2</td><td class="pts">4</td></tr>
+                    <tr class="terceiro-ok"><td><span class="pais-flag"><span class="flag">🇩🇿</span> Argélia</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>0</td><td class="pts">4</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇯🇴</span> Jordânia</span></td><td>3</td><td>0</td><td>0</td><td>3</td><td>-10</td><td class="pts">0</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO K -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo K</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">🇨🇴</span> Colômbia</span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>+3</td><td class="pts">7</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇵🇹</span> Portugal</span></td><td>3</td><td>1</td><td>2</td><td>0</td><td>+5</td><td class="pts">5</td></tr>
+                    <tr class="terceiro-ok"><td><span class="pais-flag"><span class="flag">🇨🇩</span> RD Congo</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>+1</td><td class="pts">4</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇺🇿</span> Uzbequistão</span></td><td>3</td><td>0</td><td>0</td><td>3</td><td>-9</td><td class="pts">0</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRUPO L -->
+        <div class="grupo-card">
+            <div class="grupo-header">⚽ Grupo L</div>
+            <table class="grupo-table">
+                <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="pts">P</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pais-flag"><span class="flag">in</span> Inglaterra</span></td><td>3</td><td>2</td><td>1</td><td>0</td><td>+5</td><td class="pts">7</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇭🇷</span> Croácia</span></td><td>3</td><td>2</td><td>0</td><td>1</td><td>+3</td><td class="pts">6</td></tr>
+                    <tr class="terceiro-ok"><td><span class="pais-flag"><span class="flag">🇬🇭</span> Gana</span></td><td>3</td><td>1</td><td>1</td><td>1</td><td>0</td><td class="pts">4</td></tr>
+                    <tr><td><span class="pais-flag"><span class="flag">🇵🇦</span> Panamá</span></td><td>3</td><td>0</td><td>0</td><td>3</td><td>-8</td><td class="pts">0</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <p style="color:var(--ink-500);font-size:13px;margin-top:18px;"><i class="fa-solid fa-circle-info"></i> Dados oficiais dos 12 grupos. Fonte: FIFA / Lance! &nbsp;·&nbsp; <span style="color:#22c55e;font-weight:700;">Verde</span> = classificado direto (1º e 2º) &nbsp;·&nbsp; <span style="color:var(--sky-500);font-weight:700;">Azul</span> = melhor 3º colocado (avançou)</p>
+</section>
+
+<section class="bracket-section" id="chaveamento">
+    <div class="bracket-inner">
+        <h2 class="copa-section-title"><i class="fa-solid fa-diagram-project" style="color:var(--sky-500)"></i> Chaveamento Completo — Dados Reais</h2>
+        <p style="color:var(--ink-500);font-size:14px;margin-bottom:24px;">Fonte: ABCdoABC / FIFA · 32-avos → Oitavas → Quartas → Semis → Final</p>
+
+        <!-- ====== 32-AVOS ====== -->
+        <h3 style="font-size:16px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-circle-chevron-right" style="color:var(--sky-500)"></i> Fase de 16-avos de Final</h3>
+        <div class="bracket-scroll" style="margin-bottom:36px;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;min-width:860px;">
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇨🇦</span><span class="b-nome">Canadá</span><span class="b-gol">1</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇿🇦</span><span class="b-nome">África do Sul</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">28/06 · gol: S.Eustaquio 90+7'</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇧🇷</span><span class="b-nome">Brasil</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇯🇵</span><span class="b-nome">Japão</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">29/06 · Houston · Casemiro, Martinelli</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇵🇾</span><span class="b-nome">Paraguai <span class="b-tag">PEN</span></span><span class="b-gol">1</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇩🇪</span><span class="b-nome">Alemanha</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">29/06 · Boston · 4×3 pen · Enciso, Havertz</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇲🇦</span><span class="b-nome">Marrocos <span class="b-tag">PEN</span></span><span class="b-gol">1</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇳🇱</span><span class="b-nome">Holanda</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">29/06 · Monterrey · 3×2 pen · Gakpo, Diop</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇫🇷</span><span class="b-nome">França</span><span class="b-gol">3</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇸🇪</span><span class="b-nome">Suécia</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">30/06 · Nova Jersey · Mbappé, Barcola</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇳🇴</span><span class="b-nome">Noruega</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇨🇮</span><span class="b-nome">Costa do Marfim</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">30/06 · Dallas · Nusa, Haaland</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇲🇽</span><span class="b-nome">México</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇪🇨</span><span class="b-nome">Equador</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">30/06 · Azteca · Quiñones, Jiménez</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇧🇪</span><span class="b-nome">Bélgica</span><span class="b-gol">3</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇸🇳</span><span class="b-nome">Senegal</span><span class="b-gol">2</span></div>
+                <div class="b-match-data">01/07 · Tielemans (pen 120+1')</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="b-nome">Inglaterra</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇨🇩</span><span class="b-nome">RD Congo</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">01/07 · Atlanta · Kane ×2 (virada)</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇺🇸</span><span class="b-nome">EUA</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇧🇦</span><span class="b-nome">Bósnia-Her.</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">01/07 · Balogun, Tillman</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇵🇹</span><span class="b-nome">Portugal</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇭🇷</span><span class="b-nome">Croácia</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">02/07 · AT&amp;T · CR7 pen, G.Ramos</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇪🇸</span><span class="b-nome">Espanha</span><span class="b-gol">3</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇦🇹</span><span class="b-nome">Áustria</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">02/07 · Miami · N.Williams, Yamal</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇦🇷</span><span class="b-nome">Argentina <span class="b-tag">PRORR.</span></span><span class="b-gol">3</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇨🇻</span><span class="b-nome">Cabo Verde</span><span class="b-gol">2</span></div>
+                <div class="b-match-data">03/07 · Miami · Messi ×2, Romero</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇪🇬</span><span class="b-nome">Egito <span class="b-tag">PEN</span></span><span class="b-gol">1</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇦🇺</span><span class="b-nome">Austrália</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">03/07 · Seattle · 4×2 pen</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇨🇭</span><span class="b-nome">Suíça</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇩🇿</span><span class="b-nome">Argélia</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">03/07 · Embolo, Ndoye</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇨🇴</span><span class="b-nome">Colômbia</span><span class="b-gol">1</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇬🇭</span><span class="b-nome">Gana</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">03/07 · Kansas City · Jhon Arias</div>
+            </div>
+
+        </div>
+        </div>
+
+        <!-- ====== OITAVAS ====== -->
+        <h3 style="font-size:16px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-circle-chevron-right" style="color:var(--sky-500)"></i> Oitavas de Final</h3>
+        <div class="bracket-scroll" style="margin-bottom:36px;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;min-width:860px;">
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇫🇷</span><span class="b-nome">França</span><span class="b-gol">1</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇵🇾</span><span class="b-nome">Paraguai</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">04/07 · Filadélfia · Mbappé (pen)</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇲🇦</span><span class="b-nome">Marrocos</span><span class="b-gol">3</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇨🇦</span><span class="b-nome">Canadá</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">04/07 · Houston · Ounahi ×2, Rahimi</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇳🇴</span><span class="b-nome">Noruega</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇧🇷</span><span class="b-nome">Brasil</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">05/07 · NRG Stadium · Haaland ×2 | Neymar (pen)</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="b-nome">Inglaterra</span><span class="b-gol">3</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇲🇽</span><span class="b-nome">México</span><span class="b-gol">2</span></div>
+                <div class="b-match-data">05/07 · Azteca · Bellingham ×2, Kane</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇪🇸</span><span class="b-nome">Espanha</span><span class="b-gol">1</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇵🇹</span><span class="b-nome">Portugal</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">06/07 · Dallas · Merino (90+4')</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇧🇪</span><span class="b-nome">Bélgica</span><span class="b-gol">4</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇺🇸</span><span class="b-nome">EUA</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">06/07 · Seattle · De Ketelaere ×2, Lukaku</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇦🇷</span><span class="b-nome">Argentina</span><span class="b-gol">3</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇪🇬</span><span class="b-nome">Egito</span><span class="b-gol">2</span></div>
+                <div class="b-match-data">07/07 · Atlanta · Messi, Romero, E.Fernández</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇨🇭</span><span class="b-nome">Suíça <span class="b-tag">PEN</span></span><span class="b-gol">0</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇨🇴</span><span class="b-nome">Colômbia</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">07/07 · Vancouver · 4×3 pen · Kobel decisivo</div>
+            </div>
+
+        </div>
+        </div>
+
+        <!-- ====== QUARTAS ====== -->
+        <h3 style="font-size:16px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-circle-chevron-right" style="color:var(--sky-500)"></i> Quartas de Final</h3>
+        <div class="bracket-scroll" style="margin-bottom:36px;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;min-width:860px;">
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇫🇷</span><span class="b-nome">França</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇲🇦</span><span class="b-nome">Marrocos</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">09/07 · Boston · Mbappé, Dembélé</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇪🇸</span><span class="b-nome">Espanha</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇧🇪</span><span class="b-nome">Bélgica</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">10/07 · Los Angeles · Fabián, Merino</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="b-nome">Inglaterra <span class="b-tag">PRORR.</span></span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇳🇴</span><span class="b-nome">Noruega</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">11/07 · Vancouver · Kane, Rashford</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇦🇷</span><span class="b-nome">Argentina <span class="b-tag">PRORR.</span></span><span class="b-gol">3</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇨🇭</span><span class="b-nome">Suíça</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">11/07 · Kansas · Mac Allister, J.Álvarez, Lautaro</div>
+            </div>
+
+        </div>
+        </div>
+
+        <!-- ====== SEMIFINAIS ====== -->
+        <h3 style="font-size:16px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-circle-chevron-right" style="color:var(--sky-500)"></i> Semifinais</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:680px;margin-bottom:36px;">
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇪🇸</span><span class="b-nome">Espanha</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇫🇷</span><span class="b-nome">França</span><span class="b-gol">0</span></div>
+                <div class="b-match-data">14/07 · Arlington · Oyarzabal (pen), Pedro Porro</div>
+            </div>
+
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🇦🇷</span><span class="b-nome">Argentina</span><span class="b-gol">2</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="b-nome">Inglaterra</span><span class="b-gol">1</span></div>
+                <div class="b-match-data">15/07 · Atlanta · E.Fernández, Lautaro | Gordon</div>
+            </div>
+
+        </div>
+
+        <!-- ====== 3º LUGAR ====== -->
+        <h3 style="font-size:16px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-medal" style="color:#cd7f32"></i> Disputa do 3º Lugar</h3>
+        <div style="max-width:340px;margin-bottom:36px;">
+            <div class="b-match">
+                <div class="b-team vencedor"><span class="b-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="b-nome">Inglaterra 🥉</span><span class="b-gol">6</span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇫🇷</span><span class="b-nome">França</span><span class="b-gol">4</span></div>
+                <div class="b-match-data">18/07 · Miami · Saka hat-trick, Rice, Konsa, Bellingham | Mbappé ×2, Barcola, Dembélé</div>
+            </div>
+        </div>
+
+        <!-- ====== FINAL ====== -->
+        <h3 style="font-size:16px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #ffd700;display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-trophy" style="color:#ffd700"></i> Final — 19 de julho · MetLife Stadium · Nova Jersey</h3>
+        <div style="max-width:380px;">
+            <div class="b-match final-match">
+                <div class="b-team vencedor"><span class="b-flag">🇪🇸</span><span class="b-nome"><strong>Espanha 🏆 Bicampeã</strong></span><span class="b-gol">1<span class="b-tag">PRORR.</span></span></div>
+                <div class="b-team perdedor"><span class="b-flag">🇦🇷</span><span class="b-nome">Argentina</span><span class="b-gol">0</span></div>
+                <div class="b-match-data final-data">19/07 · MetLife Stadium · Ferran Torres (106') · 80 mil pessoas</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== ÚNICA MATÉRIA ===== -->
+<section class="copa-section" id="materia" style="padding-bottom:56px;">
+    <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matéria</h2>
+    <div style="max-width:680px;">
+        <a href="materia-espanha-campea.html" class="materia-card" style="display:block;">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Copa 2026 · Campeã</span>
+                <h3 style="font-size:21px;margin:14px 0 10px;">Espanha é bicampeã mundial! Ferran Torres decide na prorrogação e elimina Argentina</h3>
+                <p>A Fúria venceu a Argentina por 1×0 no MetLife Stadium, em Nova Jersey, com gol de Ferran Torres no segundo tempo da prorrogação, e conquista seu segundo título de Copa do Mundo da história.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 19 jul. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Nova Jersey, EUA</div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- NOTA FINAL -->
+<div class="nota-final">
+    <h2>🏆 Espanha Bicampeã!</h2>
+    <p>A Espanha repete o feito de 2010 e conquista seu segundo título mundial, com uma geração brilhante liderada por Lamine Yamal, Nico Williams e Ferran Torres.</p>
+    <a href="materia-espanha-campea.html" class="btn" style="background:#ffd700;color:#3a2000;">Ler matéria completa <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>G.R.U Notícias</h3>
+                <p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p>
+                <div class="social">
+                    <a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Editorias</h4>
+                <a href="index.html">Início</a>
+                <a href="inovacao.html">Inovação</a>
+                <a href="ia.html">Inteligência Artificial</a>
+                <a href="startups.html">Startups</a>
+                <a href="entretenimento.html">Entretenimento</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p>
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p>
+                <p><i class="fa-solid fa-location-dot"></i> Rua Doutor Ramos de Azevedo, 159, Guarulhos, São Paulo, 07012-020</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Fale conosco</h4>
+                <form class="footer-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu email" required>
+                    <textarea placeholder="Mensagem" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 G.R.U Notícias — Todos os direitos reservados.
+        </div>
+    </footer>
+
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+<script>
+    const navLinks = document.querySelectorAll('.copa-nav-inner a');
+    const secIds = ['grupos','chaveamento','materia'];
+    window.addEventListener('scroll', () => {
+        let atual = 0;
+        secIds.forEach((id, i) => {
+            const el = document.getElementById(id);
+            if (el && window.scrollY >= el.offsetTop - 130) atual = i;
+        });
+        navLinks.forEach((a, i) => a.classList.toggle('ativo', i === atual));
+    }, { passive: true });
+</script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>

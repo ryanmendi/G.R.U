@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Espanha vence Argentina por 1×0 na prorrogação e conquista o bicampeonato mundial em Nova Jersey.">
+    <title>Espanha Bicampeã da Copa 2026 — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .placar-hero {
+            background: linear-gradient(135deg, #c60b1e 0%, #aa151b 50%, #f1bf00 100%);
+            text-align: center;
+            padding: 48px 24px 40px;
+        }
+        .placar-hero .eyebrow { color: rgba(255,255,255,0.85); justify-content: center; margin-bottom: 12px; }
+        .placar-hero h1 { color: #fff; font-size: 36px; margin-bottom: 24px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+
+        .placar-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 28px;
+            background: rgba(0,0,0,0.25);
+            border-radius: var(--radius-lg);
+            padding: 28px 40px;
+            margin-bottom: 20px;
+        }
+        .placar-time { text-align: center; }
+        .placar-time .flag-xl { font-size: 64px; line-height: 1; display: block; margin-bottom: 8px; }
+        .placar-time .nome { color: #fff; font-size: 15px; font-weight: 700; }
+        .placar-centro { text-align: center; }
+        .placar-centro .gols { font-size: 58px; font-weight: 700; color: #ffd700; font-family: var(--font-head); line-height: 1; }
+        .placar-centro .info-placar { color: rgba(255,255,255,0.8); font-size: 13px; margin-top: 4px; }
+
+        .placar-meta {
+            color: rgba(255,255,255,0.85);
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .placar-meta span { display: flex; align-items: center; gap: 6px; }
+
+        @media (max-width: 560px) {
+            .placar-box { gap: 16px; padding: 20px 20px; }
+            .placar-time .flag-xl { font-size: 44px; }
+            .placar-centro .gols { font-size: 40px; }
+            .placar-hero h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <span id="data"></span>
+        <span class="topbar-sep">•</span>
+        <span>Portal de notícias de Guarulhos e região</span>
+    </div>
+</header>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política </a>
+               
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="copa.html">Copa do Mundo 2026</a>
+                    <a href="outros-esportes.html">Municipal</a>
+                    <a href="basquete.html">Basquete</a>
+                    
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="inovacao.html">Inovação</a>
+                    <a href="ia.html">Inteligência Artificial</a>
+                    <a href="startups.html">Startups</a>
+                    <a href="risco.html">Segurança Digital</a>
+                </div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO COM PLACAR -->
+<section class="placar-hero">
+    <span class="eyebrow">🏆 Final · Copa do Mundo FIFA 2026</span>
+    <h1>Espanha é Bicampeã Mundial!</h1>
+
+    <div class="placar-box">
+        <div class="placar-time">
+            <span class="flag-xl">🇪🇸</span>
+            <span class="nome">Espanha</span>
+        </div>
+        <div class="placar-centro">
+            <div class="gols">1 × 0</div>
+            <div class="info-placar">Prorrogação</div>
+        </div>
+        <div class="placar-time">
+            <span class="flag-xl">🇦🇷</span>
+            <span class="nome">Argentina</span>
+        </div>
+    </div>
+
+    <div class="placar-meta">
+        <span><i class="fa-solid fa-futbol"></i> Gol: Ferran Torres (106')</span>
+        <span><i class="fa-regular fa-calendar"></i> 19 de julho de 2026</span>
+        <span><i class="fa-solid fa-location-dot"></i> MetLife Stadium · Nova Jersey, EUA</span>
+    </div>
+</section>
+
+<!-- ARTIGO -->
+<main class="article-page">
+
+    <div class="meta" style="margin-top:10px;">
+        <i class="fa-solid fa-newspaper"></i> G.R.U Esportes
+        <span class="meta-sep">•</span>
+        <i class="fa-regular fa-calendar"></i> 19 de julho de 2026
+        <span class="meta-sep">•</span>
+        <i class="fa-regular fa-clock"></i> 20h45
+    </div>
+
+    <p>
+        A Espanha é bicampeã da Copa do Mundo. No MetLife Stadium, em Nova Jersey, a Fúria dominou a Argentina de ponta a ponta, mas só conseguiu quebrar a resistência do goleiro Emiliano Martínez — o "Dibu" — no segundo tempo da prorrogação. Ferran Torres recebeu passe de cabeça de Nico Williams e finalizou forte para decretar o placar de 1×0 e colocar a Espanha no topo do mundo pela segunda vez na história.
+    </p>
+
+    <p>
+        O jogo foi equilibrado nos 90 minutos regulamentares. A Argentina tentou segurar a Espanha com uma linha defensiva bem organizada, apostando nos contra-ataques de Messi. A Fúria, porém, circulou a bola com qualidade e criou as melhores oportunidades — Nico Williams acertou o poste aos 38 minutos da segunda etapa, em uma das chances mais claras da partida.
+    </p>
+
+    <div class="highlight">
+        <strong>
+            Ferran Torres entrou em campo no segundo tempo da prorrogação e marcou o gol do título aos 106 minutos, após assistência de cabeça de Nico Williams e cruzamento de Pedro Porro.
+        </strong>
+    </div>
+
+    <h2>A última Copa de Messi</h2>
+
+    <p>
+        A final também marcou a despedida de Lionel Messi das Copas do Mundo. O craque argentino encerra sua trajetória nos Mundiais com um título (2022), dois vice-campeonatos (2014 e 2026) e o status consolidado de maior jogador da história do futebol. Aos 38 anos, Messi tentou, mas não conseguiu conduzir a Argentina à bicampeonia.
+    </p>
+
+    <p>
+        Do lado espanhol, a geração de Lamine Yamal, Nico Williams e Pedri confirmou o potencial anunciado desde a Eurocopa de 2024, conquistada pela mesma geração. O técnico Luis de la Fuente se consagra como o arquiteto de um ciclo histórico para o futebol espanhol.
+    </p>
+
+    <h2>Campanha da Espanha na Copa</h2>
+
+    <p>
+        A Espanha foi a seleção mais consistente do torneio. Venceu os três jogos da fase de grupos com placar agregado de 9×0, eliminou Portugal nas oitavas (1×0), Bélgica nas quartas (2×1) e a poderosa França nas semifinais (2×0), antes de derrotar a Argentina na decisão. Ao todo, marcou 15 gols e sofreu apenas 2 em oito partidas disputadas.
+    </p>
+
+    <h2>Prêmios individuais</h2>
+
+    <p>
+        Lamine Yamal, de apenas 18 anos, foi eleito o melhor jogador do torneio (Bola de Ouro). O goleiro da Argentina Emiliano Martínez levou o prêmio de melhor goleiro, mesmo com a derrota na final. Ferran Torres, autor do gol do título, foi eleito o melhor jogador da final.
+    </p>
+
+    <div class="alerta">
+        <h2>🇪🇸 Espanha na história das Copas</h2>
+        <p>Com o bicampeonato em 2026, a Espanha iguala a marca de países como Argentina, França e Uruguai com dois títulos mundiais. Os espanhóis também se tornaram a seleção a vencer duas finais de Copa por 1×0 na prorrogação — em 2010, Andrés Iniesta decidiu contra a Holanda; agora, Ferran Torres selou o segundo título contra a Argentina.</p>
+    </div>
+
+    <!-- COMPARTILHAR -->
+    <div class="share">
+        <h3>Compartilhar notícia</h3>
+        <div class="share-buttons">
+            <button><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+            <button><i class="fa-brands fa-facebook"></i> Facebook</button>
+            <button><i class="fa-brands fa-x-twitter"></i> Twitter</button>
+        </div>
+    </div>
+
+    <div style="margin-top:32px;">
+        <a href="copa.html" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i> Ver chaveamento completo</a>
+    </div>
+
+</main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>G.R.U Notícias</h3>
+                <p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p>
+                <div class="social">
+                    <a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Editorias</h4>
+                <a href="index.html">Início</a>
+                <a href="inovacao.html">Inovação</a>
+                <a href="ia.html">Inteligência Artificial</a>
+                <a href="startups.html">Startups</a>
+                <a href="entretenimento.html">Entretenimento</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p>
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p>
+                <p><i class="fa-solid fa-location-dot"></i> Rua Doutor Ramos de Azevedo, 159, Guarulhos, São Paulo, 07012-020</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Fale conosco</h4>
+                <form class="footer-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu email" required>
+                    <textarea placeholder="Mensagem" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 G.R.U Notícias — Todos os direitos reservados.
+        </div>
+    </footer>
+
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>

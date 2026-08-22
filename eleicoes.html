@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cobertura completa das Eleições Presidenciais 2026 — candidatos, pesquisas, cenários e análises.">
+    <title>Eleições 2026 — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .el-hero {
+            background: linear-gradient(135deg, #07223b 0%, #1e3a5f 60%, #0a3d62 100%);
+            padding: 52px 24px 44px;
+            text-align: center;
+        }
+        .el-hero .eyebrow { color: #93c5fd; justify-content: center; margin-bottom: 12px; }
+        .el-hero h1 { color: #fff; font-size: 36px; margin-bottom: 10px; }
+        .el-hero p  { color: #bfdbfe; font-size: 15px; margin: 0 auto; max-width: 520px; }
+        .el-hero .countdown {
+            display: inline-flex;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .count-box {
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: var(--radius-sm);
+            padding: 12px 18px;
+            text-align: center;
+            min-width: 70px;
+        }
+        .count-box .num { font-size: 30px; font-weight: 700; color: #fff; font-family: var(--font-head); line-height: 1; }
+        .count-box .lab { font-size: 11px; color: rgba(255,255,255,.65); text-transform: uppercase; letter-spacing: .05em; margin-top: 2px; }
+
+        /* Pesquisas table */
+        .pesq-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+        .pesq-table th { padding: 10px 14px; text-align: left; color: var(--ink-500); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; background: var(--paper); border-bottom: 2px solid var(--line); }
+        .pesq-table td { padding: 11px 14px; border-bottom: 1px solid var(--line); }
+        .pesq-table tr:last-child td { border-bottom: none; }
+        .pesq-table .lula  { color: #dc2626; font-weight: 700; }
+        .pesq-table .flavio{ color: #2563eb; font-weight: 700; }
+        .pesq-table .data  { color: var(--ink-500); font-size: 12.5px; }
+
+        /* Barras comparativas */
+        .comparativo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        .comp-bar {
+            flex: 1;
+            height: 20px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            overflow: hidden;
+        }
+        .comp-l { background: #ef4444; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; font-size: 11px; font-weight: 700; color: #fff; }
+        .comp-f { background: #3b82f6; display: flex; align-items: center; padding-left: 6px; font-size: 11px; font-weight: 700; color: #fff; }
+
+        .candidato-perfil {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .candidato-perfil h3 { font-size: 20px; margin-bottom: 4px; }
+        .candidato-perfil .partido-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-500); margin-bottom: 12px; }
+        .candidato-perfil .img-slot-perfil { margin: 0 auto 14px; width: 100px; height: 100px; }
+        .candidato-perfil p { font-size: 14px; color: var(--ink-500); line-height: 1.65; margin: 0; }
+
+        .perfis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+        @media(max-width:700px) { .perfis-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar"><div class="topbar-inner"><span id="data"></span><span class="topbar-sep">•</span><span>Portal de notícias de Guarulhos e região</span></div></header>
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política </a>
+
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="copa.html">Copa do Mundo 2026</a>
+                    <a href="outros-esportes.html">Municipal</a>
+                    <a href="basquete.html">Basquete</a>
+                    
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a>
+                    <a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a>
+                </div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="el-hero">
+    <span class="eyebrow">G.R.U Política · Eleições Gerais</span>
+    <h1>🗳️ Eleições Presidenciais 2026</h1>
+    <p>1º turno em 4 de outubro · 2º turno em 25 de outubro de 2026</p>
+    <div class="countdown" id="countdown">
+        <div class="count-box"><div class="num" id="cd-dias">—</div><div class="lab">Dias</div></div>
+        <div class="count-box"><div class="num" id="cd-h">—</div><div class="lab">Horas</div></div>
+        <div class="count-box"><div class="num" id="cd-m">—</div><div class="lab">Min</div></div>
+        <div class="count-box"><div class="num" id="cd-s">—</div><div class="lab">Seg</div></div>
+    </div>
+</section>
+
+<!-- NAV INTERNA -->
+<nav class="copa-nav">
+    <div class="copa-nav-inner">
+        <a href="#pesquisas" class="ativo"><i class="fa-solid fa-chart-bar"></i> Pesquisas</a>
+        <a href="#candidatos"><i class="fa-solid fa-user-tie"></i> Candidatos</a>
+        <a href="#guarulhos"><i class="fa-solid fa-location-dot"></i> Guarulhos</a>
+        <a href="#materias"><i class="fa-solid fa-newspaper"></i> Matérias</a>
+    </div>
+</nav>
+
+<!-- PESQUISAS -->
+<section class="copa-section" id="pesquisas">
+    <h2 class="copa-section-title"><i class="fa-solid fa-chart-bar" style="color:var(--sky-500)"></i> Pesquisas de Intenção de Voto — Julho 2026</h2>
+
+    <div style="margin-bottom:28px;">
+        <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:14px;">
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;"><span style="width:14px;height:14px;background:#ef4444;border-radius:3px;display:inline-block;"></span> Lula (PT)</span>
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;"><span style="width:14px;height:14px;background:#3b82f6;border-radius:3px;display:inline-block;"></span> Flávio Bolsonaro (PL)</span>
+        </div>
+    </div>
+
+    <h3 style="font-size:16px;margin-bottom:14px;">1º Turno</h3>
+    <div style="border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:28px;">
+        <table class="pesq-table">
+            <thead><tr><th>Instituto</th><th>Data</th><th class="lula">Lula (PT)</th><th class="flavio">Flávio (PL)</th><th>Outros</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>AtlasIntel / Bloomberg</strong></td>
+                    <td class="data">Jul/2026</td>
+                    <td class="lula">46,3%</td>
+                    <td class="flavio">36,6%</td>
+                    <td>17,1%</td>
+                </tr>
+                <tr>
+                    <td><strong>Meio / Ideia</strong></td>
+                    <td class="data">Jul/2026</td>
+                    <td class="lula">40,4%</td>
+                    <td class="flavio">32,0%</td>
+                    <td>27,6%</td>
+                </tr>
+                <tr>
+                    <td><strong>Quaest / BTG Nexus</strong></td>
+                    <td class="data">Jul/2026</td>
+                    <td class="lula">42,0%</td>
+                    <td class="flavio">34,0%</td>
+                    <td>24,0%</td>
+                </tr>
+                <tr>
+                    <td><strong>Genial / Quaest</strong></td>
+                    <td class="data">Jan/2026</td>
+                    <td class="lula">35,0%</td>
+                    <td class="flavio">26,0%</td>
+                    <td>39,0%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 style="font-size:16px;margin-bottom:14px;">2º Turno — Simulação Lula × Flávio Bolsonaro</h3>
+    <div style="border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:12px;">
+        <table class="pesq-table">
+            <thead><tr><th>Instituto</th><th>Data</th><th class="lula">Lula (PT)</th><th class="flavio">Flávio (PL)</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>AtlasIntel / Bloomberg</strong></td>
+                    <td class="data">Jul/2026</td>
+                    <td><div class="comparativo"><div class="comp-bar"><div class="comp-l" style="width:53.7%">48,8%</div><div class="comp-f" style="width:46.3%">42,3%</div></div></div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong>Meio / Ideia</strong></td>
+                    <td class="data">Jul/2026</td>
+                    <td><div class="comparativo"><div class="comp-bar"><div class="comp-l" style="width:52.9%">45,0%</div><div class="comp-f" style="width:47.1%">40,0%</div></div></div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong>Genial / Quaest</strong></td>
+                    <td class="data">Jan/2026</td>
+                    <td><div class="comparativo"><div class="comp-bar"><div class="comp-l" style="width:54.2%">45,0%</div><div class="comp-f" style="width:45.8%">38,0%</div></div></div></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="color:var(--ink-500);font-size:13px;"><i class="fa-solid fa-circle-info"></i> Fontes: CartaCapital, JOTA, Reuters. Todas as pesquisas têm margem de erro de ±2 p.p.</p>
+</section>
+
+<!-- CANDIDATOS -->
+<section class="copa-section" id="candidatos" style="background:var(--paper);padding-top:44px;padding-bottom:44px;max-width:100%;">
+    <div style="max-width:var(--container);margin:0 auto;padding:0 24px;">
+    <h2 class="copa-section-title"><i class="fa-solid fa-user-tie" style="color:var(--terracotta-500)"></i> Os principais candidatos</h2>
+    <div class="perfis-grid">
+
+        <div class="candidato-perfil" style="border-top:4px solid #ef4444;">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Luiz Inácio Lula da Silva</h3>
+            <div class="partido-tag" style="color:#dc2626;">PT — Partido dos Trabalhadores</div>
+            <p>Atual presidente da República em busca do 4º mandato. Líder nas pesquisas com ampla vantagem no 1º turno, Lula governa com aprovação em torno de 47% mas enfrenta desgaste econômico e polarização crescente. Foi condenado e preso em 2018, mas teve seus direitos políticos restaurados pelo STF. Retornou à presidência em janeiro de 2023 após derrotar Bolsonaro por menos de 2 pontos percentuais.</p>
+        </div>
+
+        <div class="candidato-perfil" style="border-top:4px solid #3b82f6;">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Flávio Bolsonaro</h3>
+            <div class="partido-tag" style="color:#2563eb;">PL — Partido Liberal</div>
+            <p>Senador pelo Rio de Janeiro e filho do ex-presidente Jair Bolsonaro, preso em novembro de 2025 após ser condenado a 27 anos por tentativa de golpe de Estado. Flávio foi escolhido pelo pai para carregar o legado bolsonarista nas urnas. Aparece com 36,6% no 1º turno pela AtlasIntel/Bloomberg em julho de 2026, mas enfrenta resistências até dentro da própria direita, que cogita Tarcísio de Freitas como candidato mais competitivo.</p>
+        </div>
+
+        <div class="candidato-perfil" style="border-top:4px solid #f97316;">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Tarcísio de Freitas</h3>
+            <div class="partido-tag" style="color:#c2410c;">Republicanos — Governador de São Paulo</div>
+            <p>Engenheiro civil e ex-militar, Tarcísio governa São Paulo desde 2023 com alta aprovação. É visto como o candidato mais competitivo da centro-direita e lideraria Lula no 2º turno segundo pesquisas de 2025. Ainda não confirmou a candidatura presidencial — para isso, precisaria deixar o cargo até abril de 2026. Sua sombra acompanha Flávio Bolsonaro e pode redefinir o cenário eleitoral a qualquer momento.</p>
+        </div>
+
+        <div class="candidato-perfil" style="border-top:4px solid #6b7280;">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Outros pré-candidatos</h3>
+            <div class="partido-tag">Campo da oposição e alternativas</div>
+            <p>Ronaldo Caiado (PSD/Goiás) e Romeu Zema (Novo/MG) declararam pré-candidaturas. Ratinho Júnior (PSD/PR) aparece com 9% em pesquisas. Pablo Marçal (PRTB) foi declarado inelegível até 2032. Eduardo Leite (PSD/RS) é citado como possível candidato da centro-direita moderada. Ciro Gomes (PSDB) também manifestou interesse em disputar.</p>
+        </div>
+
+    </div>
+    </div>
+</section>
+
+<!-- GUARULHOS NAS ELEIÇÕES -->
+<section class="copa-section" id="guarulhos">
+    <h2 class="copa-section-title"><i class="fa-solid fa-location-dot" style="color:#22c55e"></i> Guarulhos nas Eleições 2026</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;">
+
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px;box-shadow:var(--shadow-sm);">
+            <h3 style="font-size:17px;margin-bottom:10px;">🏙️ Governo Municipal (2025–2028)</h3>
+            <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0 0 14px;">Lucas Sanches (PL), eleito em outubro de 2024, assumiu a prefeitura de Guarulhos em 1º de janeiro de 2025. Com 28 anos, é o prefeito mais jovem da história da cidade. Sua gestão tem como prioridade a entrega de serviços nos bairros e o resgate do orgulho de morar em Guarulhos.</p>
+            <span class="badge" style="background:var(--sky-100);color:var(--navy-800);font-size:12px;">Gestão 2025–2028</span>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px;box-shadow:var(--shadow-sm);">
+            <h3 style="font-size:17px;margin-bottom:10px;">🏛️ Câmara Municipal</h3>
+            <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0 0 14px;">A Câmara Municipal de Guarulhos é composta por 35 vereadores eleitos em outubro de 2024. A Mesa Diretora para o biênio 2025–2026, chapa única "Guarulhos Forte", foi eleita por unanimidade com 34 votos: Martello (Republicanos) preside a Casa.</p>
+            <span class="badge" style="background:var(--sky-100);color:var(--navy-800);font-size:12px;">35 Vereadores</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- MATÉRIAS -->
+<section class="copa-section" id="materias" style="padding-top:0;">
+    <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matérias Políticas</h2>
+    <div class="materias-grid">
+
+        <a href="materia-bolsonaro-preso.html" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Justiça</span>
+                <h3>STF condena Bolsonaro a 27 anos por tentativa de golpe de Estado</h3>
+                <p>Quatro dos cinco ministros da 1ª Turma do STF votaram pela condenação do ex-presidente pelos crimes de organização criminosa armada, golpe de Estado e abolição do Estado Democrático de Direito.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 12 set. 2025</div>
+            </div>
+        </a>
+
+        <a href="materia-lei-dosimetria.html" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Leis</span>
+                <h3>Lei da Dosimetria: Congresso aprova e Senado sanciona redução de penas do 8 de Janeiro</h3>
+                <p>Aprovada pela Câmara em dezembro de 2025 e sancionada pelo Senado em maio de 2026, a lei pode reduzir a pena de Bolsonaro de 27 para cerca de 2 anos.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 8 mai. 2026</div>
+            </div>
+        </a>
+
+
+        <a href="materia-lucas-sanches-prefeito.html" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Guarulhos</span>
+                <h3>Lucas Sanches assume prefeitura de Guarulhos: "vamos resgatar o orgulho de morar aqui"</h3>
+                <p>O mais jovem prefeito da história de Guarulhos tomou posse em 1º de janeiro de 2025 com um discurso focado na entrega de serviços nos bairros da cidade.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 1 jan. 2025 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>G.R.U Notícias</h3>
+                <p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p>
+                <div class="social">
+                    <a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Editorias</h4>
+                <a href="index.html">Início</a>
+                <a href="inovacao.html">Inovação</a>
+                <a href="ia.html">Inteligência Artificial</a>
+                <a href="startups.html">Startups</a>
+                <a href="entretenimento.html">Entretenimento</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p>
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p>
+                <p><i class="fa-solid fa-location-dot"></i> Rua Doutor Ramos de Azevedo, 159, Guarulhos, São Paulo, 07012-020</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Fale conosco</h4>
+                <form class="footer-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu email" required>
+                    <textarea placeholder="Mensagem" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 G.R.U Notícias — Todos os direitos reservados.
+        </div>
+    </footer>
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+<script>
+// Countdown para 4 de outubro de 2026 às 08h00 (horário de Brasília)
+function atualizaCountdown() {
+    const alvo = new Date('2026-10-04T08:00:00-03:00');
+    const agora = new Date();
+    const diff = alvo - agora;
+    if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<div class="count-box" style="min-width:180px"><div class="num" style="font-size:20px;">Votação em andamento!</div></div>';
+        return;
+    }
+    const dias = Math.floor(diff / 86400000);
+    const h    = Math.floor((diff % 86400000) / 3600000);
+    const m    = Math.floor((diff % 3600000)  / 60000);
+    const s    = Math.floor((diff % 60000)    / 1000);
+    document.getElementById('cd-dias').textContent = String(dias).padStart(2,'0');
+    document.getElementById('cd-h').textContent    = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent    = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent    = String(s).padStart(2,'0');
+}
+atualizaCountdown();
+setInterval(atualizaCountdown, 1000);
+
+// Nav ativa
+const navLinks = document.querySelectorAll('.copa-nav-inner a');
+const secIds = ['pesquisas','candidatos','guarulhos','materias'];
+window.addEventListener('scroll', () => {
+    let atual = 0;
+    secIds.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 130) atual = i;
+    });
+    navLinks.forEach((a, i) => a.classList.toggle('ativo', i === atual));
+}, { passive: true });
+</script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>

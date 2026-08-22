@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inteligência Artificial transforma empresas em Guarulhos — matérias, análises e cobertura completa.">
+    <title>Inteligência Artificial — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .tec-sub-hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #07223b 60%, #1a0533 100%);
+            padding: 52px 24px 44px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .tec-sub-hero::before {
+            content: "🤖";
+            position: absolute;
+            font-size: 260px;
+            opacity: 0.05;
+            top: -20px; right: -10px;
+            pointer-events: none;
+        }
+        .tec-sub-hero .eyebrow { color: #a5b4fc; justify-content: center; margin-bottom: 12px; }
+        .tec-sub-hero h2 { color: #fff; font-size: 36px; margin-bottom: 8px; }
+        .tec-sub-hero p  { color: #c7d2fe; font-size: 15px; margin: 0 auto; max-width: 500px; }
+
+        .tec-nav {
+            background: var(--surface);
+            border-bottom: 2px solid var(--line);
+            position: sticky;
+            top: var(--header-h);
+            z-index: 200;
+        }
+        .tec-nav-inner {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .tec-nav-inner::-webkit-scrollbar { display: none; }
+        .tec-nav-inner a {
+            padding: 13px 20px;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--ink-500);
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: color .2s, border-color .2s;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: -2px;
+        }
+        .tec-nav-inner a:hover,
+        .tec-nav-inner a.ativo { color: var(--navy-800); border-bottom-color: var(--terracotta-500); }
+        .dark .tec-nav-inner a.ativo { color: #cfe9f7; }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar"><div class="topbar-inner"><span id="data"></span><span class="topbar-sep">•</span><span>Portal de notícias de Guarulhos e região</span></div></header>
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="eleicoes.html">Eleições 2026</a><a href="politica.html">Governo</a><a href="materia-bolsonaro-preso.html">Leis</a></div>
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="copa.html">Copa do Mundo 2026</a><a href="outros-esportes.html">Municipal</a><a href="basquete.html">Basquete</a></div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="inovacao.html">Inovação</a>
+                    <a href="ia.html">Inteligência Artificial</a>
+                    <a href="startups.html">Startups</a>
+                    <a href="risco.html">Segurança Digital</a>
+                </div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="tec-sub-hero">
+    <span class="eyebrow">G.R.U Tecnologia</span>
+    <h2>🤖 Inteligência Artificial</h2>
+    <p>Como a IA está transformando empresas, serviços e o cotidiano em Guarulhos e no Brasil.</p>
+</section>
+
+<!-- NAV INTERNA -->
+<nav class="tec-nav">
+    <div class="tec-nav-inner">
+        <a href="inovacao.html"><i class="fa-solid fa-lightbulb"></i> Inovação</a>
+        <a href="ia.html" class="ativo"><i class="fa-solid fa-robot"></i> IA</a>
+        <a href="startups.html"><i class="fa-solid fa-rocket"></i> Startups</a>
+        <a href="risco.html"><i class="fa-solid fa-shield-halved"></i> Segurança Digital</a>
+    </div>
+</nav>
+
+<!-- DESTAQUE -->
+<div class="copa-section">
+    <div style="background:linear-gradient(120deg,#1e1b4b 0%,#07223b 100%);border-radius:var(--radius-lg);padding:36px 44px;display:flex;align-items:center;justify-content:space-between;gap:28px;box-shadow:var(--shadow-md);margin-bottom:40px;">
+        <div>
+            <div style="color:#a5b4fc;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">🤖 Destaque · IA em 2026</div>
+            <h3 style="color:#fff;font-size:24px;margin-bottom:8px;">ChatGPT, Gemini e Claude chegam às empresas de Guarulhos</h3>
+            <p style="color:#c7d2fe;font-size:14px;max-width:460px;margin-bottom:20px;">Pequenos negócios e grandes empresas da cidade já adotam ferramentas de IA generativa para automatizar atendimento, produção de conteúdo e análise de dados.</p>
+            <a href="#materia-ia-empresas" class="btn" style="background:#6366f1;color:#fff;">Ler matéria <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div style="font-size:80px;line-height:1;flex-shrink:0;">🤖</div>
+    </div>
+
+    <!-- MATÉRIAS -->
+    <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matérias sobre Inteligência Artificial</h2>
+    <div class="materias-grid">
+
+        <a href="#" class="materia-card" id="materia-ia-empresas">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">IA · Empresas</span>
+                <h3>ChatGPT, Gemini e Claude: como as IAs generativas estão chegando às empresas de Guarulhos</h3>
+                <p>Pequenos negócios da cidade adotam assistentes de IA para redigir e-mails, atender clientes no WhatsApp e analisar planilhas — reduzindo custos e aumentando produtividade.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 20 mai. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">IA · Saúde</span>
+                <h3>Hospital de Guarulhos implanta IA para diagnóstico de imagens e reduz tempo de laudo em 60%</h3>
+                <p>O Hospital Estadual de Guarulhos passou a usar inteligência artificial para análise de raio-x e tomografias, agilizando o atendimento nas unidades de emergência.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 12 mai. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">IA · Educação</span>
+                <h3>Escolas municipais de Guarulhos testam IA como assistente pedagógico em sala de aula</h3>
+                <p>Projeto piloto em 12 escolas da rede municipal usa IA para personalizar o aprendizado e apoiar professores na identificação de alunos com dificuldades.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 5 mai. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">IA · Debate</span>
+                <h3>Inteligência Artificial vai acabar com empregos? Especialistas do ABC e Guarulhos debatem o tema</h3>
+                <p>Economistas e tecnólogos divergem sobre o impacto da IA no mercado de trabalho regional. A maioria aposta em transformação — não em extinção — das funções.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 28 abr. 2026</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">IA · Segurança</span>
+                <h3>GRU Airport usa câmeras com IA para detectar comportamentos suspeitos em tempo real</h3>
+                <p>O Aeroporto Internacional de Guarulhos ampliou seu sistema de vigilância com inteligência artificial que analisa o comportamento de passageiros em áreas sensíveis.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 15 abr. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">IA · Regulação</span>
+                <h3>Marco Legal da IA no Brasil: o que muda para empresas e cidadãos em 2026</h3>
+                <p>O Congresso Nacional aprovou a lei que regulamenta o uso de inteligência artificial no país. Saiba quais são os direitos dos usuários e as obrigações das empresas.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 3 abr. 2026</div>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col"><h3>G.R.U Notícias</h3><p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p><div class="social"><a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h4>Tecnologia</h4><a href="tecnologia.html">Hub de Tecnologia</a><a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a><a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a></div>
+        <div class="footer-col"><h4>Contato</h4><p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p><p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p><p><i class="fa-solid fa-location-dot"></i> Rua Dr. Ramos de Azevedo, 159 — Guarulhos, SP</p></div>
+        <div class="footer-col"><h4>Fale conosco</h4><form class="footer-form"><input type="text" placeholder="Seu nome" required><input type="email" placeholder="Seu email" required><textarea placeholder="Mensagem" required></textarea><button type="submit">Enviar</button></form></div>
+    </div>
+    <div class="footer-bottom">© 2026 G.R.U Notícias — Todos os direitos reservados.</div>
+</footer>
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/main.js"></script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>

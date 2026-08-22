@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cobertura política no G.R.U Notícias — eleições 2026, governo, leis e política em Guarulhos.">
+    <title>Política — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .pol-hero {
+            background: linear-gradient(135deg, #07223b 0%, #1e3a5f 55%, #0a3d62 100%);
+            padding: 56px 24px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .pol-hero::before {
+            content: "🏛️";
+            position: absolute;
+            font-size: 260px;
+            opacity: 0.05;
+            top: -30px; right: -20px;
+            pointer-events: none;
+        }
+        .pol-hero .eyebrow { color: #93c5fd; justify-content: center; margin-bottom: 12px; }
+        .pol-hero h2 { color: #fff; font-size: 38px; margin-bottom: 8px; }
+        .pol-hero p  { color: #bfdbfe; font-size: 16px; margin: 0 auto; max-width: 500px; }
+
+        /* Eleições banner */
+        .el-banner {
+            background: linear-gradient(120deg, #1e3a5f 0%, #07223b 100%);
+            border-radius: var(--radius-lg);
+            padding: 36px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+        }
+        .el-banner h2 { color: #93c5fd; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+        .el-banner h3 { color: #fff; font-size: 24px; margin-bottom: 8px; }
+        .el-banner p  { color: #bfdbfe; font-size: 14px; max-width: 460px; margin-bottom: 20px; }
+
+        /* Barra de pesquisa */
+        .pesquisa-bar {
+            flex-shrink: 0;
+            min-width: 220px;
+        }
+        .pesquisa-titulo { color: #93c5fd; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+        .pesquisa-cand {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .pesquisa-cand .cand-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cand-row .cand-nome { color: #fff; font-size: 13px; font-weight: 600; width: 120px; flex-shrink: 0; }
+        .cand-row .bar-wrap { flex: 1; background: rgba(255,255,255,0.12); border-radius: 999px; height: 10px; }
+        .cand-row .bar-fill { height: 10px; border-radius: 999px; }
+        .bar-lula  { background: #ef4444; }
+        .bar-flavio{ background: #3b82f6; }
+        .bar-outros{ background: #6b7280; }
+        .cand-row .cand-pct { color: #fff; font-size: 12px; font-weight: 700; width: 36px; text-align: right; flex-shrink: 0; }
+        .pesquisa-fonte { color: rgba(255,255,255,.5); font-size: 11px; margin-top: 10px; }
+
+        /* Cards de candidatos */
+        .cands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+        .cand-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 22px 20px;
+            box-shadow: var(--shadow-sm);
+            transition: transform .3s, box-shadow .3s;
+        }
+        .cand-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .cand-card .img-slot-perfil { margin: 0 auto 12px; }
+        .cand-card h3 { font-size: 17px; margin-bottom: 4px; }
+        .cand-card .cand-partido { font-size: 12.5px; font-weight: 700; color: var(--ink-500); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; }
+        .cand-card p  { font-size: 13.5px; color: var(--ink-500); line-height: 1.55; margin: 0 0 12px; }
+        .cand-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+        .cand-badge.gov  { background: #fee2e2; color: #b91c1c; }
+        .cand-badge.op   { background: #dbeafe; color: #1e40af; }
+        .cand-badge.alt  { background: #f3f4f6; color: #374151; }
+
+        @media(max-width:700px){
+            .el-banner { flex-direction: column; padding: 26px 22px; }
+            .pesquisa-bar { width: 100%; min-width: unset; }
+        }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar"><div class="topbar-inner"><span id="data"></span><span class="topbar-sep">•</span><span>Portal de notícias de Guarulhos e região</span></div></header>
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política </a>
+
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="copa.html">Copa do Mundo 2026</a>
+                    <a href="outros-esportes.html">Municipal</a>
+                    <a href="basquete.html">Basquete</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a>
+                    <a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a>
+                </div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<section class="pol-hero">
+    <span class="eyebrow">G.R.U Política</span>
+    <h2>🏛️ Política</h2>
+    <p>Eleições, governo, leis e a política que impacta Guarulhos e o Brasil.</p>
+</section>
+
+<!-- BANNER ELEIÇÕES -->
+<div class="copa-section" style="padding-bottom:0;">
+    <div class="el-banner">
+        <div>
+            <h2>🗳️ Eleições Presidenciais · Outubro 2026</h2>
+            <h3>Lula lidera corrida, mas Flávio Bolsonaro se consolida como adversário</h3>
+            <p>A quatro meses do primeiro turno, pesquisas de julho de 2026 mostram Lula com 46,3% e Flávio Bolsonaro com 36,6% no 1º turno. No 2º turno: 48,8% a 42,3%.</p>
+            <a href="eleicoes.html" class="btn" style="background:#3b82f6;color:#fff;">Ver cobertura completa <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="pesquisa-bar">
+            <div class="pesquisa-titulo">Pesquisa AtlasIntel/Bloomberg · Jul/2026 · 1º Turno</div>
+            <div class="pesquisa-cand">
+                <div class="cand-row">
+                    <span class="cand-nome">🔴 Lula (PT)</span>
+                    <div class="bar-wrap"><div class="bar-fill bar-lula" style="width:92.6%"></div></div>
+                    <span class="cand-pct">46,3%</span>
+                </div>
+                <div class="cand-row">
+                    <span class="cand-nome">🔵 Flávio (PL)</span>
+                    <div class="bar-wrap"><div class="bar-fill bar-flavio" style="width:73.2%"></div></div>
+                    <span class="cand-pct">36,6%</span>
+                </div>
+                <div class="cand-row">
+                    <span class="cand-nome">⚪ Outros</span>
+                    <div class="bar-wrap"><div class="bar-fill bar-outros" style="width:34.2%"></div></div>
+                    <span class="cand-pct">17,1%</span>
+                </div>
+            </div>
+            <div class="pesquisa-fonte">Fonte: AtlasIntel/Bloomberg · Margem: ±2,0 p.p.</div>
+        </div>
+    </div>
+</div>
+
+<!-- CANDIDATOS -->
+<div class="copa-section">
+    <h2 class="copa-section-title"><i class="fa-solid fa-user-tie" style="color:var(--sky-500)"></i> Principais candidatos à Presidência 2026</h2>
+    <div class="cands-grid">
+
+        <div class="cand-card">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Luiz Inácio Lula da Silva</h3>
+            <div class="cand-partido">PT — Presidente (candidato à reeleição)</div>
+            <p>Atual presidente da República, Lula busca o 4º mandato. Lidera todas as pesquisas mas enfrenta aprovação estagnada e polarização intensa.</p>
+            <span class="cand-badge gov"><i class="fa-solid fa-circle"></i> Situação</span>
+        </div>
+
+        <div class="cand-card">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Flávio Bolsonaro</h3>
+            <div class="cand-partido">PL — Senador pelo Rio de Janeiro</div>
+            <p>Indicado pelo pai Jair Bolsonaro como candidato da direita, representa o legado bolsonarista. Lidera a oposição nas pesquisas com cerca de 36%.</p>
+            <span class="cand-badge op"><i class="fa-solid fa-circle"></i> Oposição</span>
+        </div>
+
+        <div class="cand-card">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Tarcísio de Freitas</h3>
+            <div class="cand-partido">Republicanos — Governador de São Paulo</div>
+            <p>Embora não confirmado, Tarcísio é apontado como alternativa da centro-direita ao bolsonarismo. Sua decisão sobre candidatar-se define o cenário eleitoral.</p>
+            <span class="cand-badge alt"><i class="fa-solid fa-circle-question"></i> Indefinido</span>
+        </div>
+
+        <div class="cand-card">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Romeu Zema</h3>
+            <div class="cand-partido">Novo — Ex-governador de Minas Gerais</div>
+            <p>Representante da direita liberal, Zema oficializou sua pré-candidatura e busca um espaço entre o PT e o PL no espectro político nacional.</p>
+            <span class="cand-badge op"><i class="fa-solid fa-circle"></i> Oposição</span>
+        </div>
+
+        <div class="cand-card">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Ronaldo Caiado</h3>
+            <div class="cand-partido">PSD — Governador de Goiás</div>
+            <p>Caiado declarou pré-candidatura e tenta atrair os eleitores do agronegócio e da direita moderada que buscam uma opção além de Flávio Bolsonaro.</p>
+            <span class="cand-badge op"><i class="fa-solid fa-circle"></i> Oposição</span>
+        </div>
+
+        <div class="cand-card">
+            <div class="img-slot-perfil">
+                <i class="fa-solid fa-user"></i>
+                <input type="file" accept="image/*" aria-label="Foto do candidato">
+            </div>
+            <h3>Ratinho Júnior</h3>
+            <div class="cand-partido">PSD — Governador do Paraná</div>
+            <p>Governador popular com boa aprovação no Paraná, surge como nome do PSD para o centro-direita. Aparece com cerca de 9% nas pesquisas nacionais.</p>
+            <span class="cand-badge op"><i class="fa-solid fa-circle"></i> Oposição</span>
+        </div>
+
+    </div>
+</div>
+
+<!-- MATÉRIAS -->
+<div class="copa-section" style="background:var(--paper);padding-top:44px;padding-bottom:44px;max-width:100%;">
+    <div style="max-width:var(--container);margin:0 auto;padding:0 24px;">
+    <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matérias em destaque</h2>
+    <div class="materias-grid">
+
+
+        <a href="materia-bolsonaro-preso.html" class="materia-card">
+            <img src="img/bolsonaro.jpg" alt="Bolsonaro preso - STF condena ex-presidente" style="width:100%;height:200px;object-fit:cover;border-radius:var(--radius-md) var(--radius-md) 0 0;">
+            <div class="materia-body">
+                <span class="badge">Justiça</span>
+                <h3>Bolsonaro preso: STF condena ex-presidente a 27 anos por tentativa de golpe de Estado</h3>
+                <p>Em setembro de 2025, o STF condenou Jair Bolsonaro por organização criminosa, tentativa de golpe e abolição do Estado Democrático de Direito.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 12 set. 2025</div>
+            </div>
+        </a>
+
+        <a href="materia-tarcisio-candidatura.html" class="materia-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Tarcísio_de_Freitas_-_2022_%28cropped%29.jpg/640px-Tarcísio_de_Freitas_-_2022_%28cropped%29.jpg" alt="Tarcísio de Freitas - candidatura presidencial 2026" style="width:100%;height:200px;object-fit:cover;border-radius:var(--radius-md) var(--radius-md) 0 0;" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=640&q=80';">
+            <div class="materia-body">
+                <span class="badge">Eleições 2026</span>
+                <h3>Tarcísio de Freitas entre governador e presidente: a decisão que pode mudar as eleições</h3>
+                <p>O governador de São Paulo ainda não confirmou se disputará o Palácio do Planalto ou renovará o mandato no estado, dividindo estrategistas da direita.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 14 jan. 2026</div>
+            </div>
+        </a>
+
+        <a href="materia-camara-gru.html" class="materia-card">
+            <img src="https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=640&q=80" alt="Câmara Municipal de Guarulhos" style="width:100%;height:200px;object-fit:cover;border-radius:var(--radius-md) var(--radius-md) 0 0;">
+            <div class="materia-body">
+                <span class="badge">Guarulhos</span>
+                <h3>Câmara de Guarulhos elege Martello presidente e instala nova Mesa Diretora para 2025-2026</h3>
+                <p>A chapa única "Guarulhos Forte" foi eleita por unanimidade com 34 votos, tendo Martello (Republicanos) como presidente da Casa Legislativa.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 1 jan. 2025 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+    </div>
+    </div>
+</div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>G.R.U Notícias</h3>
+                <p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p>
+                <div class="social">
+                    <a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Editorias</h4>
+                <a href="index.html">Início</a>
+                <a href="inovacao.html">Inovação</a>
+                <a href="ia.html">Inteligência Artificial</a>
+                <a href="startups.html">Startups</a>
+                <a href="entretenimento.html">Entretenimento</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p>
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p>
+                <p><i class="fa-solid fa-location-dot"></i> Rua Doutor Ramos de Azevedo, 159, Guarulhos, São Paulo, 07012-020</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Fale conosco</h4>
+                <form class="footer-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu email" required>
+                    <textarea placeholder="Mensagem" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 G.R.U Notícias — Todos os direitos reservados.
+        </div>
+    </footer>
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>

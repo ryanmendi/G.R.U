@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Segurança Digital em Guarulhos — golpes, proteção de dados, segurança infantil e como se proteger online.">
+    <title>Segurança Digital — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .tec-sub-hero { background:linear-gradient(135deg,#450a0a 0%,#07223b 60%,#1e1b4b 100%); padding:52px 24px 44px; text-align:center; position:relative; overflow:hidden; }
+        .tec-sub-hero::before { content:"🛡️"; position:absolute; font-size:260px; opacity:.05; top:-20px; right:-10px; pointer-events:none; }
+        .tec-sub-hero .eyebrow { color:#fca5a5; justify-content:center; margin-bottom:12px; }
+        .tec-sub-hero h2 { color:#fff; font-size:36px; margin-bottom:8px; }
+        .tec-sub-hero p  { color:#fecaca; font-size:15px; margin:0 auto; max-width:500px; }
+        .tec-nav { background:var(--surface); border-bottom:2px solid var(--line); position:sticky; top:var(--header-h); z-index:200; }
+        .tec-nav-inner { max-width:var(--container); margin:0 auto; padding:0 24px; display:flex; gap:0; overflow-x:auto; scrollbar-width:none; }
+        .tec-nav-inner::-webkit-scrollbar { display:none; }
+        .tec-nav-inner a { padding:13px 20px; font-size:13.5px; font-weight:600; color:var(--ink-500); white-space:nowrap; border-bottom:3px solid transparent; transition:color .2s,border-color .2s; display:flex; align-items:center; gap:7px; margin-bottom:-2px; }
+        .tec-nav-inner a:hover,.tec-nav-inner a.ativo { color:var(--navy-800); border-bottom-color:var(--terracotta-500); }
+        .dark .tec-nav-inner a.ativo { color:#cfe9f7; }
+
+        /* Cards de dicas de segurança */
+        .dica-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; margin-bottom:44px; }
+        .dica-card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:20px 18px; box-shadow:var(--shadow-sm); display:flex; align-items:flex-start; gap:14px; }
+        .dica-icon { font-size:28px; flex-shrink:0; margin-top:2px; }
+        .dica-card h4 { font-size:14.5px; margin:0 0 5px; color:var(--ink-900); }
+        .dica-card p  { font-size:13px; color:var(--ink-500); line-height:1.55; margin:0; }
+
+        /* Alerta de golpe */
+        .golpe-banner { background:linear-gradient(120deg,#450a0a 0%,#7f1d1d 100%); border-radius:var(--radius-lg); padding:32px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; box-shadow:var(--shadow-md); margin-bottom:40px; }
+        .golpe-banner h3 { color:#fca5a5; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px; }
+        .golpe-banner h2 { color:#fff; font-size:22px; margin-bottom:8px; }
+        .golpe-banner p  { color:#fecaca; font-size:14px; max-width:440px; margin-bottom:18px; }
+        .golpe-icon { font-size:72px; flex-shrink:0; }
+        @media(max-width:700px){ .golpe-banner { flex-direction:column; padding:26px 22px; } .golpe-icon { font-size:50px; } }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar"><div class="topbar-inner"><span id="data"></span><span class="topbar-sep">•</span><span>Portal de notícias de Guarulhos e região</span></div></header>
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="eleicoes.html">Eleições 2026</a><a href="politica.html">Governo</a><a href="materia-bolsonaro-preso.html">Leis</a></div>
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="copa.html">Copa do Mundo 2026</a><a href="outros-esportes.html">Municipal</a><a href="basquete.html">Basquete</a></div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu"><a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a><a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a></div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<section class="tec-sub-hero">
+    <span class="eyebrow">G.R.U Tecnologia</span>
+    <h2>🛡️ Segurança Digital</h2>
+    <p>Proteja-se de golpes, cuide dos seus dados e saiba como navegar com segurança na internet.</p>
+</section>
+
+<nav class="tec-nav">
+    <div class="tec-nav-inner">
+        <a href="inovacao.html"><i class="fa-solid fa-lightbulb"></i> Inovação</a>
+        <a href="ia.html"><i class="fa-solid fa-robot"></i> IA</a>
+        <a href="startups.html"><i class="fa-solid fa-rocket"></i> Startups</a>
+        <a href="risco.html" class="ativo"><i class="fa-solid fa-shield-halved"></i> Segurança Digital</a>
+    </div>
+</nav>
+
+<!-- ALERTA DE GOLPES -->
+<div class="copa-section">
+    <div class="golpe-banner">
+        <div>
+            <h3>⚠️ Alerta — Guarulhos 2026</h3>
+            <h2>Golpes digitais crescem 78% na cidade — veja como se proteger</h2>
+            <p>A Delegacia de Crimes Cibernéticos de Guarulhos registrou recorde de ocorrências em 2025. Os golpes mais comuns são: WhatsApp clonado, Pix falso e phishing bancário.</p>
+            <a href="#materia-golpes" class="btn" style="background:#ef4444;color:#fff;">Ver matéria completa <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="golpe-icon">🚨</div>
+    </div>
+
+    <!-- DICAS DE SEGURANÇA -->
+    <h2 class="copa-section-title"><i class="fa-solid fa-shield-halved" style="color:var(--sky-500)"></i> Dicas Essenciais de Segurança</h2>
+    <div class="dica-grid">
+
+        <div class="dica-card">
+            <div class="dica-icon">🔐</div>
+            <div>
+                <h4>Use senhas fortes e únicas</h4>
+                <p>Nunca repita a mesma senha em sites diferentes. Use um gerenciador como Bitwarden ou 1Password.</p>
+            </div>
+        </div>
+
+        <div class="dica-card">
+            <div class="dica-icon">📲</div>
+            <div>
+                <h4>Ative a verificação em duas etapas</h4>
+                <p>WhatsApp, e-mail e banco — todos precisam de 2FA ativado para proteger sua conta de invasões.</p>
+            </div>
+        </div>
+
+        <div class="dica-card">
+            <div class="dica-icon">🎣</div>
+            <div>
+                <h4>Cuidado com links suspeitos</h4>
+                <p>Nunca clique em links recebidos por SMS ou WhatsApp de remetentes desconhecidos. Verifique sempre a URL.</p>
+            </div>
+        </div>
+
+        <div class="dica-card">
+            <div class="dica-icon">💳</div>
+            <div>
+                <h4>Nunca pague Pix a estranhos</h4>
+                <p>Golpistas fingem ser familiares em dificuldade. Ligue antes de fazer qualquer transferência.</p>
+            </div>
+        </div>
+
+        <div class="dica-card">
+            <div class="dica-icon">👶</div>
+            <div>
+                <h4>Proteja as crianças online</h4>
+                <p>Ative o controle parental, converse sobre os riscos da internet e monitore as redes que seus filhos usam.</p>
+            </div>
+        </div>
+
+        <div class="dica-card">
+            <div class="dica-icon">🔄</div>
+            <div>
+                <h4>Mantenha apps e sistema atualizados</h4>
+                <p>Atualizações corrigem falhas de segurança. Celular e computador desatualizados são alvos fáceis para hackers.</p>
+            </div>
+        </div>
+
+        <div class="dica-card">
+            <div class="dica-icon">📶</div>
+            <div>
+                <h4>Evite Wi-Fi público para dados sensíveis</h4>
+                <p>Nunca acesse banco ou e-mail em redes abertas de shopping ou aeroporto sem usar uma VPN.</p>
+            </div>
+        </div>
+
+        <div class="dica-card">
+            <div class="dica-icon">📞</div>
+            <div>
+                <h4>Denuncie golpes ao Safernet</h4>
+                <p>Se cair em um golpe, registre boletim de ocorrência na delegacia online e denuncie ao Safernet Brasil (safernet.org.br).</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MATÉRIAS -->
+    <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matérias sobre Segurança Digital</h2>
+    <div class="materias-grid">
+
+        <a href="#" class="materia-card" id="materia-golpes">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Golpes</span>
+                <h3>Golpes digitais crescem 78% em Guarulhos em 2025 — Pix e WhatsApp são os principais alvos</h3>
+                <p>A Delegacia de Crimes Cibernéticos registrou 4.312 ocorrências só em 2025. O prejuízo acumulado passou de R$ 28 milhões. Saiba como se proteger.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 8 mai. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Crianças</span>
+                <h3>Especialistas alertam: crianças de Guarulhos passam mais de 6h por dia na internet sem supervisão</h3>
+                <p>Pesquisa do CRAMI Guarulhos aponta que 67% dos pais nunca conversaram com os filhos sobre os riscos das redes sociais e conteúdos inapropriados.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 24 abr. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Phishing</span>
+                <h3>Novo golpe clona sites de bancos e usa IA para imitar voz de gerentes — veja como funciona</h3>
+                <p>Criminosos usam deepfake de voz para ligar fingindo ser do banco. O golpe já causou prejuízo de mais de R$ 2 milhões em Guarulhos e região.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 15 abr. 2026</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">LGPD</span>
+                <h3>ANPD multa empresa de Guarulhos em R$ 1,2 milhão por vazamento de dados de clientes</h3>
+                <p>Uma empresa de logística local foi punida pela Autoridade Nacional de Proteção de Dados após exposição de 80 mil cadastros de clientes sem comunicação.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 3 abr. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Jovens</span>
+                <h3>Adolescentes de Guarulhos são vítimas de golpes em jogos online — pais precisam ficar atentos</h3>
+                <p>Golpistas oferecem "skins" e itens virtuais em troca de dados pessoais ou dinheiro via Pix. Saiba quais são os jogos mais explorados pelos criminosos.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 20 mar. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+        <a href="#" class="materia-card">
+            <div class="img-slot">
+                <div class="img-slot-label">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Clique para adicionar imagem</span>
+                </div>
+                <input type="file" accept="image/*" aria-label="Carregar imagem da matéria">
+            </div>
+            <div class="materia-body">
+                <span class="badge">Prevenção</span>
+                <h3>Prefeitura de Guarulhos lança programa de educação digital em 80 escolas municipais</h3>
+                <p>O programa "Internet Segura GRU" vai levar palestras e oficinas sobre segurança digital, cyberbullying e privacidade para 40 mil alunos da rede municipal.</p>
+                <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 10 mar. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Guarulhos, SP</div>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col"><h3>G.R.U Notícias</h3><p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p><div class="social"><a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h4>Tecnologia</h4><a href="tecnologia.html">Hub de Tecnologia</a><a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a><a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a></div>
+        <div class="footer-col"><h4>Contato</h4><p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p><p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p><p><i class="fa-solid fa-location-dot"></i> Rua Dr. Ramos de Azevedo, 159 — Guarulhos, SP</p></div>
+        <div class="footer-col"><h4>Fale conosco</h4><form class="footer-form"><input type="text" placeholder="Seu nome" required><input type="email" placeholder="Seu email" required><textarea placeholder="Mensagem" required></textarea><button type="submit">Enviar</button></form></div>
+    </div>
+    <div class="footer-bottom">© 2026 G.R.U Notícias — Todos os direitos reservados.</div>
+</footer>
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/main.js"></script>
+    <script src="js/chat-widget.js" defer></script>
+</body>
+</html>
