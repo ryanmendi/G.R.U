@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--bg) 0%, rgba(79, 155, 201, 0.03) 100%);
+            min-height: 100vh;
+        }
+
+        .admin-wrapper {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+
+        .admin-header {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 20px 28px;
+            border: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 32px;
+        }
+
+        .admin-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ink-900);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-header h2 i {
+            color: var(--sky-500);
+        }
+
+        .user-badge {
+            background: rgba(79, 155, 201, 0.1);
+            color: var(--sky-600);
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 13.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dark .user-badge {
+            background: rgba(79, 155, 201, 0.2);
+            color: #cfe9f7;
+        }
+
+        .btn-logout-panel {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1.5px solid var(--terracotta-500);
+            color: var(--terracotta-500);
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13.5px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-logout-panel:hover {
+            background: var(--terracotta-500);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(170, 21, 27, 0.2);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 992px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .panel-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink-900);
+            margin-bottom: 24px;
+            border-bottom: 1.5px solid var(--line);
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .panel-card h3 i {
+            color: var(--sky-500);
+        }
+
+        .form-section {
+            background: rgba(79, 155, 201, 0.02);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+        .form-section-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            color: var(--ink-600);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-800);
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            background: var(--surface);
+            color: var(--ink-900);
+            font-size: 13.5px;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sky-500);
+            box-shadow: 0 0 0 3px rgba(79, 155, 201, 0.1);
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 576px) {
+            .form-row-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .checkbox-label-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 10px 0;
+        }
+
+        .checkbox-label-group input {
+            width: 18px;
+            height: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            accent-color: var(--sky-500);
+        }
+
+        .checkbox-label-group span {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--ink-800);
+        }
+
+        .btn-publish-materia {
+            background: var(--sky-500);
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(79, 155, 201, 0.2);
+        }
+
+        .btn-publish-materia:hover {
+            background: var(--sky-600);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(79, 155, 201, 0.3);
+        }
+
+        .preview-sticky {
+            position: sticky;
+            top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* Lista de matérias refinada */
+        .materia-admin-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--line);
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+
+        .materia-admin-item:hover {
+            background: rgba(79, 155, 201, 0.03);
+        }
+
+        .materia-admin-item .info {
+            max-width: 80%;
+        }
+
+        .materia-admin-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ink-900);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 4px;
+        }
+
+        .materia-admin-item .meta-badges {
+            display: flex;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--ink-500);
+            align-items: center;
+        }
+
+        .badge-cat-label {
+            background: var(--line);
+            color: var(--ink-700);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .btn-delete-admin {
+            background: transparent;
+            border: none;
+            color: var(--terracotta-500);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-delete-admin:hover {
+            background: rgba(170, 21, 27, 0.08);
+            color: var(--terracotta-600);
+        }
+
+        .alert-toast {
+            display: none;
+            background: #def7ec;
+            border: 1px solid #bcf0da;
+            color: #03543f;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(3, 84, 63, 0.1);
+        }
+
+        .dark .alert-toast {
+            background: rgba(3, 84, 63, 0.15);
+            border-color: rgba(3, 84, 63, 0.3);
+            color: #bcf0da;
+        }
+
+        #loading-panel {
+            position: fixed;
+            inset: 0;
+            background: var(--surface);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<div id="loading-panel">
+    <i class="fa-solid fa-circle-notch fa-spin" style="font-size:48px; color:var(--sky-500); margin-bottom:16px;"></i>
+    <p style="font-weight: 600; color: var(--ink-700);">Carregando painel de edição...</p>
+</div>
+
+<header class="header" style="border-bottom: 1px solid var(--line); background: var(--surface);">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+        </div>
+    </div>
+</header>
+
+<main class="admin-wrapper">
+    <!-- BARRA ADMINISTRATIVA -->
+    <div class="admin-header">
+        <h2><i class="fa-solid fa-cubes"></i> Painel da Redação</h2>
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="user-badge">
+                <i class="fa-solid fa-user-circle"></i>
+                <span id="user-email">-</span>
+            </div>
+            <button class="btn-logout-panel" id="btn-logout"><i class="fa-solid fa-sign-out-alt"></i> Sair</button>
+        </div>
+    </div>
+
+    <div id="success-box" class="alert-toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>A notícia foi criada e publicada com sucesso nas editorias selecionadas!</span>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- FORMULÁRIO DE PUBLICAÇÃO -->
+        <div class="panel-card">
+            <h3><i class="fa-solid fa-file-pen"></i> Redigir Matéria</h3>
+            <form id="publish-form">
+                
+                <div class="form-section">
+                    <span class="form-section-title"><i class="fa-solid fa-heading"></i> Identificação e Títulos</span>
+                    
+                    <div class="form-group">
+                        <label for="title">Título Principal</label>
+                        <input type="text" id="title" placeholder="Escreva um título chamativo..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Subtítulo (Resumo do Card)</label>
+                        <input type="text" id="description" placeholder="Insira uma descrição breve que aparecerá no card..." required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <span class="form-section-title"><i class="fa-solid fa-layer-group"></i> Editoria e Categorização</span>
+                    
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="category">Seção / Categoria</label>
+                            <select id="category" required>
+                                <option value="ia">Inteligência Artificial</option>
+                                <option value="inovacao">Inovação</option>
+                                <option value="startups">Startups</option>
+                                <option value="risco">Segurança Digital</option>
+                                <option value="politica">Política</option>
+                                <option value="esportes">Esportes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="badge">Badge Texto</label>
+                            <input type="text" id="badge" value="IA · G.R.U" placeholder="Ex: IA · Saúde" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="location">Localização da Notícia</label>
+                            <input type="text" id="location" value="Guarulhos, SP">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-label-group" style="margin-top: 24px;">
+                                <input type="checkbox" id="destaque">
+                                <span>Exibir em Destaque na Home</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <span class="form-section-title"><i class="fa-solid fa-images"></i> Mídia Visual</span>
+                    
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="imageUrl">URL da Imagem de Capa</label>
+                            <input type="text" id="imageUrl" placeholder="img/foto.jpg ou link externo">
+                        </div>
+                        <div class="form-group">
+                            <label for="placeholderEmoji">Emoji Substituto (Sem Imagem)</label>
+                            <input type="text" id="placeholderEmoji" value="🤖" placeholder="Ex: 🏢">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <span class="form-section-title"><i class="fa-solid fa-paragraph"></i> Escrita do Conteúdo</span>
+                    
+                    <div class="form-group">
+                        <label for="highlight">Frase de Destaque Interno (Opcional)</label>
+                        <input type="text" id="highlight" placeholder="Frase destacada em negrito no meio da página da notícia...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content">Corpo da Matéria (Use Enter para separar os parágrafos)</label>
+                        <textarea id="content" rows="10" placeholder="Redija o conteúdo completo da notícia aqui..." required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-publish-materia" id="btn-publish-submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Publicar Matéria</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- PRÉ-VISUALIZAÇÃO EM TEMPO REAL E ÚLTIMOS POSTS -->
+        <div class="preview-sticky">
+            
+            <!-- PRÉ-VISUALIZAÇÃO -->
+            <div class="panel-card">
+                <h3><i class="fa-solid fa-desktop"></i> Card Preview (Home / Editorias)</h3>
+                
+                <div class="materias-grid" style="grid-template-columns: 1fr; margin-top: 10px;">
+                    <div class="materia-card" style="pointer-events: none; max-width: 100%; width: 100%;">
+                        <div id="preview-image-box">
+                            <div class="materia-img-placeholder">🤖</div>
+                        </div>
+                        <div class="materia-body">
+                            <span class="badge" id="preview-badge">IA · G.R.U</span>
+                            <h3 id="preview-title">Título Principal</h3>
+                            <p id="preview-description">Subtítulo explicativo que resume o card da notícia.</p>
+                            <div class="materia-meta">
+                                <i class="fa-regular fa-calendar"></i> <span id="preview-date">Hoje</span> &nbsp;•&nbsp; 
+                                <i class="fa-solid fa-location-dot"></i> <span id="preview-location">Guarulhos, SP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GERENCIAR POSTAGENS -->
+            <div class="panel-card">
+                <h3><i class="fa-solid fa-folder-open"></i> Matérias Cadastradas</h3>
+                <div id="materias-list" style="max-height: 350px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
+                    <p style="text-align:center; color:var(--ink-500); padding:20px;">Carregando banco de dados...</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- SDK do Firebase (compat v8) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    const loadingPanel = document.getElementById('loading-panel');
+    const userEmailSpan = document.getElementById('user-email');
+    const btnLogout = document.getElementById('btn-logout');
+    const publishForm = document.getElementById('publish-form');
+    const successBox = document.getElementById('success-box');
+    const materiasListContainer = document.getElementById('materias-list');
+    const btnPublishSubmit = document.getElementById('btn-publish-submit');
+
+    // Elementos da Pré-visualização
+    const previewTitle = document.getElementById('preview-title');
+    const previewDescription = document.getElementById('preview-description');
+    const previewBadge = document.getElementById('preview-badge');
+    const previewLocation = document.getElementById('preview-location');
+    const previewImageBox = document.getElementById('preview-image-box');
+
+    // Validação de Sessão Administrativa
+    if (typeof auth !== 'undefined') {
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = 'login.html';
+            } else if (user.email !== 'grunoticias01@gmail.com') {
+                auth.signOut().then(() => {
+                    window.location.href = 'login.html';
+                });
+            } else {
+                userEmailSpan.textContent = user.email;
+                loadingPanel.style.display = 'none';
+                loadMaterias();
+            }
+        });
+    } else {
+        alert("Erro: Firebase não configurado corretamente.");
+        window.location.href = 'index.html';
+    }
+
+    btnLogout.addEventListener('click', () => {
+        auth.signOut().then(() => {
+            window.location.href = 'login.html';
+        });
+    });
+
+    // SISTEMA DE PREVIEW EM TEMPO REAL
+    const titleInput = document.getElementById('title');
+    const descInput = document.getElementById('description');
+    const badgeInput = document.getElementById('badge');
+    const locInput = document.getElementById('location');
+    const imgInput = document.getElementById('imageUrl');
+    const emojiInput = document.getElementById('placeholderEmoji');
+
+    function updatePreview() {
+        previewTitle.textContent = titleInput.value.trim() || 'Título Principal';
+        previewDescription.textContent = descInput.value.trim() || 'Subtítulo explicativo que resume o card da notícia.';
+        previewBadge.textContent = badgeInput.value.trim() || 'Categoria';
+        previewLocation.textContent = locInput.value.trim() || 'Guarulhos, SP';
+
+        const imgUrl = imgInput.value.trim();
+        const emoji = emojiInput.value.trim() || '📰';
+
+        if (imgUrl !== '') {
+            previewImageBox.innerHTML = `<img src="${imgUrl}" alt="Preview" class="materia-img" onerror="handleImageError()">`;
+        } else {
+            previewImageBox.innerHTML = `<div class="materia-img-placeholder">${emoji}</div>`;
+        }
+    }
+
+    function handleImageError() {
+        const emoji = emojiInput.value.trim() || '📰';
+        previewImageBox.innerHTML = `<div class="materia-img-placeholder">${emoji} (Imagem Inválida)</div>`;
+    }
+
+    // Registra listeners nos inputs para live updates
+    titleInput.addEventListener('input', updatePreview);
+    descInput.addEventListener('input', updatePreview);
+    badgeInput.addEventListener('input', updatePreview);
+    locInput.addEventListener('input', updatePreview);
+    imgInput.addEventListener('input', updatePreview);
+    emojiInput.addEventListener('input', updatePreview);
+
+    // Enviar dados para o Firestore
+    publishForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (typeof db === 'undefined') {
+            alert("Erro: Banco de dados não conectado.");
+            return;
+        }
+
+        btnPublishSubmit.disabled = true;
+        btnPublishSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Publicando Matéria...';
+
+        const categoryVal = document.getElementById('category').value;
+        const newMateria = {
+            title: titleInput.value.trim(),
+            description: descInput.value.trim(),
+            category: categoryVal,
+            badge: badgeInput.value.trim() || categoryVal.toUpperCase(),
+            imageUrl: imgInput.value.trim(),
+            placeholderEmoji: emojiInput.value.trim() || '📰',
+            location: locInput.value.trim(),
+            destaque: document.getElementById('destaque').checked,
+            highlight: document.getElementById('highlight').value.trim(),
+            content: document.getElementById('content').value.trim(),
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        db.collection('materias').add(newMateria)
+            .then(() => {
+                successBox.style.display = 'flex';
+                publishForm.reset();
+                
+                // Defaults pós reset
+                locInput.value = 'Guarulhos, SP';
+                emojiInput.value = '🤖';
+                badgeInput.value = 'IA · G.R.U';
+                document.getElementById('category').value = 'ia';
+
+                btnPublishSubmit.disabled = false;
+                btnPublishSubmit.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Publicar Matéria</span>';
+                
+                updatePreview();
+
+                setTimeout(() => {
+                    successBox.style.display = 'none';
+                }, 4000);
+
+                loadMaterias();
+            })
+            .catch(err => {
+                console.error("Erro ao cadastrar matéria:", err);
+                alert("Erro ao cadastrar matéria: " + err.message);
+                btnPublishSubmit.disabled = false;
+                btnPublishSubmit.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Publicar Matéria</span>';
+            });
+    });
+
+    // Carregar matérias publicadas no painel lateral
+    function loadMaterias() {
+        if (typeof db === 'undefined') return;
+
+        db.collection('materias')
+            .orderBy('timestamp', 'desc')
+            .get()
+            .then(snapshot => {
+                materiasListContainer.innerHTML = '';
+                if (snapshot.empty) {
+                    materiasListContainer.innerHTML = '<p style="text-align:center; color:var(--ink-500); padding:20px;">Nenhuma notícia cadastrada.</p>';
+                    return;
+                }
+
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const item = document.createElement('div');
+                    item.className = 'materia-admin-item';
+                    
+                    const dateStr = data.timestamp ? data.timestamp.toDate().toLocaleDateString('pt-BR') : 'Sem data';
+                    const catLabel = (data.category || 'tecnologia').toUpperCase();
+                    const highlightLabel = data.destaque ? '<span style="color:var(--sky-500); font-weight:700;"><i class="fa-solid fa-star"></i> Home</span>' : '';
+
+                    item.innerHTML = `
+                        <div class="info">
+                            <h4>${data.title}</h4>
+                            <div class="meta-badges">
+                                <span class="badge-cat-label">${catLabel}</span>
+                                <span>${dateStr}</span>
+                                ${highlightLabel}
+                            </div>
+                        </div>
+                        <button class="btn-delete-admin" data-id="${doc.id}" title="Deletar matéria permanentemente"><i class="fa-solid fa-trash-can"></i></button>
+                    `;
+                    materiasListContainer.appendChild(item);
+                });
+
+                // Registrar cliques de deletar
+                document.querySelectorAll('.btn-delete-admin').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const mId = btn.getAttribute('data-id');
+                        if (confirm("Tem certeza que deseja excluir esta notícia permanentemente?")) {
+                            db.collection('materias').doc(mId).delete()
+                                .then(() => {
+                                    loadMaterias();
+                                })
+                                .catch(err => {
+                                    alert("Erro ao excluir: " + err.message);
+                                });
+                        }
+                    });
+                });
+            })
+            .catch(err => {
+                console.error("Erro ao ler matérias:", err);
+                materiasListContainer.innerHTML = `<p style="text-align:center; color:var(--terracotta-500); padding:20px;">Erro de carregamento: ${err.message}</p>`;
+            });
+    }
+
+    // Gerenciar defaults de badge/emoji no change da categoria
+    document.getElementById('category').addEventListener('change', (e) => {
+        const cat = e.target.value;
+        
+        if (cat === 'ia') {
+            badgeInput.value = 'IA · G.R.U';
+            emojiInput.value = '🤖';
+        } else if (cat === 'inovacao') {
+            badgeInput.value = 'Inovação';
+            emojiInput.value = '🏢';
+        } else if (cat === 'startups') {
+            badgeInput.value = 'Startups';
+            emojiInput.value = '🚀';
+        } else if (cat === 'risco') {
+            badgeInput.value = 'Segurança Digital';
+            emojiInput.value = '🛡️';
+        } else if (cat === 'politica') {
+            badgeInput.value = 'Política';
+            emojiInput.value = '🏛️';
+        } else if (cat === 'esportes') {
+            badgeInput.value = 'Esportes';
+            emojiInput.value = '⚽';
+        }
+        updatePreview();
+    });
+
+    // Carrega o preview padrão
+    updatePreview();
+</script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar — Painel G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--bg) 0%, rgba(79, 155, 201, 0.05) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .login-split-container {
+            display: flex;
+            min-height: calc(100vh - 72px);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .login-card {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            width: 100%;
+            background: var(--surface);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 1px solid var(--line);
+            overflow: hidden;
+            min-height: 550px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-brand-side {
+            background: linear-gradient(135deg, var(--navy-800) 0%, var(--sky-700) 100%);
+            padding: 48px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-brand-side::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            top: -100px;
+            right: -100px;
+        }
+
+        .brand-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-top img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .brand-top h1 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+
+        .brand-mid h2 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .brand-mid p {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .brand-bottom {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .login-form-side {
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-header {
+            margin-bottom: 32px;
+        }
+
+        .form-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ink-900);
+        }
+
+        .form-header p {
+            font-size: 14px;
+            color: var(--ink-500);
+            margin-top: 6px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-800);
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--ink-400);
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 14px 16px 14px 46px;
+            border-radius: 12px;
+            border: 1.5px solid var(--line);
+            font-size: 14px;
+            background: var(--surface);
+            color: var(--ink-900);
+            transition: all 0.2s ease;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--sky-500);
+            box-shadow: 0 0 0 4px rgba(79, 155, 201, 0.12);
+        }
+
+        .input-wrapper input:focus + i {
+            color: var(--sky-500);
+        }
+
+        .input-wrapper .toggle-password {
+            position: absolute;
+            right: 16px;
+            left: auto;
+            cursor: pointer;
+            color: var(--ink-500);
+        }
+        
+        .input-wrapper .toggle-password:hover {
+            color: var(--sky-500);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: var(--sky-500);
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(79, 155, 201, 0.2);
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background: var(--sky-600);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(79, 155, 201, 0.3);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .alert-error {
+            display: none;
+            background: rgba(170, 21, 27, 0.08);
+            border: 1px solid rgba(170, 21, 27, 0.2);
+            color: var(--terracotta-500);
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 13.5px;
+            align-items: center;
+            gap: 10px;
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+
+        @media (max-width: 900px) {
+            .login-card {
+                grid-template-columns: 1fr;
+            }
+            .login-brand-side {
+                display: none;
+            }
+            .login-form-side {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="header" style="border-bottom: 1px solid var(--line); background: var(--surface);">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+        </div>
+    </div>
+</header>
+
+<main class="login-split-container">
+    <div class="login-card">
+        <!-- Lado da Marca / Convidativo -->
+        <div class="login-brand-side">
+            <div class="brand-top">
+                <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="G.R.U Logo">
+                <h1>G.R.U Notícias</h1>
+            </div>
+            
+            <div class="brand-mid">
+                <h2>Gerencie as notícias do portal de forma simples.</h2>
+                <p>Publique novas matérias nas seções de Inteligência Artificial, Inovação, Startups, Segurança Digital e muito mais diretamente pelo navegador.</p>
+            </div>
+            
+            <div class="brand-bottom">
+                <p>© 2026 Portal G.R.U Notícias. Acesso restrito à redação.</p>
+            </div>
+        </div>
+
+        <!-- Lado do Formulário -->
+        <div class="login-form-side">
+            <div class="form-header">
+                <h3>Olá, editor!</h3>
+                <p>Por favor, insira sua senha do Firebase para acessar o painel.</p>
+            </div>
+
+            <div id="error-box" class="alert-error">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span id="error-msg">Email ou senha incorretos.</span>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail Administrativo</label>
+                    <div class="input-wrapper">
+                        <input type="email" id="email" value="grunoticias01@gmail.com" readonly required>
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha de Acesso</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" placeholder="Digite sua senha" required autocomplete="current-password">
+                        <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" id="btn-submit">
+                    <span>Entrar no Painel</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<!-- SDK do Firebase (compat v8) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    // Alternar visibilidade da senha
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    
+    togglePassword.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+        togglePassword.classList.toggle('fa-eye');
+        togglePassword.classList.toggle('fa-eye-slash');
+    });
+
+    // Se já estiver logado, redireciona
+    if (typeof auth !== 'undefined') {
+        auth.onAuthStateChanged(user => {
+            if (user && user.email === 'grunoticias01@gmail.com') {
+                window.location.href = 'admin.html';
+            }
+        });
+    }
+
+    const form = document.getElementById('login-form');
+    const errorBox = document.getElementById('error-box');
+    const errorMsg = document.getElementById('error-msg');
+    const btnSubmit = document.getElementById('btn-submit');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        if (email !== 'grunoticias01@gmail.com') {
+            showError("Apenas a conta de administrador grunoticias01@gmail.com tem permissão.");
+            return;
+        }
+
+        if (typeof auth === 'undefined') {
+            showError("O Firebase não foi inicializado corretamente em js/firebase-config.js.");
+            return;
+        }
+
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Entrando...';
+        errorBox.style.display = 'none';
+
+        auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                window.location.href = 'admin.html';
+            })
+            .catch((error) => {
+                console.error("Erro de autenticação:", error);
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = '<span>Entrar no Painel</span> <i class="fa-solid fa-arrow-right"></i>';
+                
+                let message = "Falha ao conectar. Verifique a senha inserida.";
+                if (error.code === 'auth/wrong-password') {
+                    message = "Senha incorreta. Tente novamente.";
+                } else if (error.code === 'auth/user-not-found') {
+                    message = "Conta não configurada no Authentication do Firebase.";
+                } else if (error.code === 'auth/network-request-failed') {
+                    message = "Conexão de rede indisponível.";
+                } else if (error.message) {
+                    message = error.message;
+                }
+                showError(message);
+            });
+    });
+
+    function showError(text) {
+        errorMsg.textContent = text;
+        errorBox.style.display = 'flex';
+    }
+</script>
+</body>
+</html>

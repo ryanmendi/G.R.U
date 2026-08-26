@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Matéria do portal G.R.U Notícias">
+    <title>Carregando Matéria... — G.R.U Notícias</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .loading-container {
+            text-align: center;
+            padding: 80px 24px;
+        }
+        .loading-spinner {
+            font-size: 40px;
+            color: var(--sky-500);
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #error-container {
+            display: none;
+            text-align: center;
+            padding: 80px 24px;
+        }
+        #article-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<script>if (localStorage.getItem('gru-theme') === 'dark') document.body.classList.add('dark');</script>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <span id="data"></span>
+        <span class="topbar-sep">•</span>
+        <span>Portal de notícias de Guarulhos e região</span>
+    </div>
+</header>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo-area">
+            <img src="img/WhatsApp Image 2026-04-22 at 13.03.12.jpeg" alt="Logo G.R.U">
+            <div class="logo-text"><h1>G.R.U</h1><p>Gerando Raízes Urbanas</p></div>
+        </a>
+        <nav id="menu">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="politica.html">Política </a>
+            </div>
+            <div class="dropdown">
+                <a href="esportes.html">Esportes <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="copa.html">Copa do Mundo 2026</a>
+                    <a href="outros-esportes.html">Municipal</a>
+                    <a href="basquete.html">Basquete</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="tecnologia.html">Tecnologia <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="inovacao.html">Inovação</a>
+                    <a href="ia.html">Inteligência Artificial</a>
+                    <a href="startups.html">Startups</a>
+                    <a href="risco.html">Segurança Digital</a>
+                </div>
+            </div>
+            <a href="entretenimento.html">Entretenimento</a>
+        </nav>
+        <div class="actions">
+            <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Tema">🌙</button>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<!-- LOADING INDICATOR -->
+<div id="loading" class="loading-container">
+    <i class="fa-solid fa-circle-notch loading-spinner"></i>
+    <p>Carregando conteúdo da matéria...</p>
+</div>
+
+<!-- ERROR CONTAINER -->
+<div id="error-container">
+    <i class="fa-solid fa-triangle-exclamation" style="font-size:48px; color:var(--terracotta-500); margin-bottom:16px;"></i>
+    <h2>Matéria não encontrada</h2>
+    <p>Não foi possível carregar a notícia solicitada. Ela pode ter sido removida ou o link está incorreto.</p>
+    <div style="margin-top:24px;">
+        <a href="index.html" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i> Voltar ao início</a>
+    </div>
+</div>
+
+<!-- ARTIGO DINÂMICO -->
+<main class="article-page" id="article-content">
+
+    <div class="meta" style="margin-top:10px;">
+        <span id="meta-category-icon"><i class="fa-solid fa-newspaper"></i></span> <span id="meta-category-name">G.R.U Notícias</span>
+        <span class="meta-sep">•</span>
+        <i class="fa-regular fa-calendar"></i> <span id="meta-date">-</span>
+        <span class="meta-sep">•</span>
+        <i class="fa-regular fa-clock"></i> <span id="meta-time">-</span>
+    </div>
+
+    <h1 style="font-size:32px; margin:16px 0 8px; font-family:var(--font-head);" id="article-title">-</h1>
+
+    <div id="image-wrapper">
+        <!-- Inserido dinamicamente via JS -->
+    </div>
+
+    <div class="highlight" id="article-highlight-box" style="display:none;">
+        <strong id="article-highlight-text"></strong>
+    </div>
+
+    <div id="article-body-paragraphs">
+        <!-- Parágrafos inseridos via JS -->
+    </div>
+
+    <!-- COMPARTILHAR -->
+    <div class="share">
+        <h3>Compartilhar notícia</h3>
+        <div class="share-buttons">
+            <button><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+            <button><i class="fa-brands fa-facebook"></i> Facebook</button>
+            <button><i class="fa-brands fa-x-twitter"></i> Twitter</button>
+        </div>
+    </div>
+
+    <div style="margin-top:32px;">
+        <a id="btn-back" href="index.html" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+    </div>
+
+</main>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col"><h3>G.R.U Notícias</h3><p>Seu portal de notícias sobre Guarulhos e região, com informação rápida, confiável e atualizada.</p><div class="social"><a href="https://www.instagram.com/gru_jornaloficial?igsh=ZTJ2YW80MzF5dDF0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h4>Tecnologia</h4><a href="tecnologia.html">Hub de Tecnologia</a><a href="inovacao.html">Inovação</a><a href="ia.html">Inteligência Artificial</a><a href="startups.html">Startups</a><a href="risco.html">Segurança Digital</a></div>
+        <div class="footer-col"><h4>Contato</h4><p><i class="fa-solid fa-envelope"></i> grunoticias@gmail.com</p><p><i class="fa-brands fa-whatsapp"></i> (11) 95608-7158</p><p><i class="fa-solid fa-location-dot"></i> Rua Dr. Ramos de Azevedo, 159 — Guarulhos, SP</p></div>
+        <div class="footer-col"><h4>Fale conosco</h4><form class="footer-form"><input type="text" placeholder="Seu nome" required><input type="email" placeholder="Seu email" required><textarea placeholder="Mensagem" required></textarea><button type="submit">Enviar</button></form></div>
+    </div>
+    <div class="footer-bottom">© 2026 G.R.U Notícias — Todos os direitos reservados.</div>
+</footer>
+
+<button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- SDK do Firebase (compat v8) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/chat-widget.js" defer></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        const loadingDiv = document.getElementById('loading');
+        const errorDiv = document.getElementById('error-container');
+        const contentDiv = document.getElementById('article-content');
+
+        if (!id || typeof db === 'undefined') {
+            loadingDiv.style.display = 'none';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        db.collection('materias').doc(id).get()
+            .then(doc => {
+                if (!doc.exists) {
+                    loadingDiv.style.display = 'none';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+
+                const data = doc.data();
+                
+                // Set page titles and metadata
+                document.title = `${data.title} — G.R.U Notícias`;
+                document.getElementById('article-title').textContent = data.title;
+
+                // Category Configuration
+                const cat = data.category ? data.category.toLowerCase() : 'tecnologia';
+                const badgeText = data.badge || 'Tecnologia';
+                document.getElementById('meta-category-name').textContent = `G.R.U ${badgeText}`;
+                
+                // Icon Mapping
+                const iconContainer = document.getElementById('meta-category-icon');
+                let catIcon = '<i class="fa-solid fa-newspaper"></i>';
+                let backUrl = 'index.html';
+                let backLabel = 'Voltar ao início';
+
+                if (cat === 'ia') {
+                    catIcon = '<i class="fa-solid fa-microchip"></i>';
+                    backUrl = 'ia.html';
+                    backLabel = 'Voltar para Inteligência Artificial';
+                } else if (cat === 'inovacao') {
+                    catIcon = '<i class="fa-solid fa-lightbulb"></i>';
+                    backUrl = 'inovacao.html';
+                    backLabel = 'Voltar para Inovação';
+                } else if (cat === 'startups') {
+                    catIcon = '<i class="fa-solid fa-rocket"></i>';
+                    backUrl = 'startups.html';
+                    backLabel = 'Voltar para Startups';
+                } else if (cat === 'risco') {
+                    catIcon = '<i class="fa-solid fa-shield-halved"></i>';
+                    backUrl = 'risco.html';
+                    backLabel = 'Voltar para Segurança Digital';
+                } else if (cat === 'politica') {
+                    catIcon = '<i class="fa-solid fa-landmark"></i>';
+                    backUrl = 'politica.html';
+                    backLabel = 'Voltar para Política';
+                } else if (cat === 'esportes') {
+                    catIcon = '<i class="fa-solid fa-futbol"></i>';
+                    backUrl = 'esportes.html';
+                    backLabel = 'Voltar para Esportes';
+                }
+
+                iconContainer.innerHTML = catIcon;
+                
+                const btnBack = document.getElementById('btn-back');
+                btnBack.href = backUrl;
+                btnBack.innerHTML = `<i class="fa-solid fa-arrow-left"></i> ${backLabel}`;
+
+                // Date Formatting
+                let dateStr = '';
+                let timeStr = '12h00'; // Fallback
+                if (data.date) {
+                    dateStr = data.date;
+                } else if (data.timestamp) {
+                    const tDate = data.timestamp.toDate();
+                    dateStr = tDate.toLocaleDateString('pt-BR');
+                    timeStr = tDate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                } else {
+                    dateStr = new Date().toLocaleDateString('pt-BR');
+                }
+                document.getElementById('meta-date').textContent = dateStr;
+                document.getElementById('meta-time').textContent = timeStr;
+
+                // Image Rendering
+                const imageWrapper = document.getElementById('image-wrapper');
+                if (data.imageUrl && data.imageUrl.trim() !== '') {
+                    imageWrapper.innerHTML = `
+                        <img src="${data.imageUrl}" alt="${data.title}" style="width:100%; max-height:420px; object-fit:cover; border-radius:var(--radius-lg); margin:20px 0;">
+                    `;
+                } else {
+                    imageWrapper.innerHTML = `
+                        <div class="materia-img-placeholder" style="height:250px; font-size:64px; border-radius:var(--radius-lg); margin:20px 0;">
+                            ${data.placeholderEmoji || '📰'}
+                        </div>
+                    `;
+                }
+
+                // Highlight Block
+                if (data.highlight && data.highlight.trim() !== '') {
+                    document.getElementById('article-highlight-box').style.display = 'block';
+                    document.getElementById('article-highlight-text').textContent = data.highlight;
+                }
+
+                // Body Paragraphs
+                const bodyContainer = document.getElementById('article-body-paragraphs');
+                bodyContainer.innerHTML = '';
+                
+                if (data.content) {
+                    // Split content by line breaks or handle paragraphs
+                    const paragraphs = data.content.split('\n');
+                    paragraphs.forEach(pText => {
+                        if (pText.trim() !== '') {
+                            const p = document.createElement('p');
+                            p.textContent = pText.trim();
+                            bodyContainer.appendChild(p);
+                        }
+                    });
+                } else {
+                    const p = document.createElement('p');
+                    p.textContent = data.description || '';
+                    bodyContainer.appendChild(p);
+                }
+
+                // Show Content
+                loadingDiv.style.display = 'none';
+                contentDiv.style.display = 'block';
+            })
+            .catch(err => {
+                console.error("Erro ao recuperar matéria do Firestore:", err);
+                loadingDiv.style.display = 'none';
+                errorDiv.style.display = 'block';
+            });
+    });
+</script>
+</body>
+</html>
