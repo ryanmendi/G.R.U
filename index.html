@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -69,8 +69,8 @@
             </nav>
 
             <div class="actions">
-                <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Alternar tema claro/escuro">🌙</button>
-                <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menu">☰</button>
+                <button class="toggle" id="darkToggle" onclick="toggleDark()" aria-label="Alternar tema claro/escuro"><i class="fa-solid fa-moon"></i></button>
+                <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
     </header>
@@ -247,9 +247,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <!-- SDK do Firebase (compat v8) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="js/firebase-config.js"></script>
     <script src="js/firebase-loader.js"></script>
+    <script src="js/auth-header.js"></script>
     <script src="js/main.js"></script>
     <script src="js/chat-widget.js" defer></script>
 </body>

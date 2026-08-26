@@ -13,8 +13,11 @@ function toggleDark() {
 
 function syncToggleIcon() {
     const btn = document.getElementById("darkToggle");
-    if (btn) {
-        btn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    if (!btn) return;
+    const isDark = document.body.classList.contains("dark");
+    const icon = btn.querySelector("i");
+    if (icon) {
+        icon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
     }
 }
 
