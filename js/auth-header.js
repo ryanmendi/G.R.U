@@ -8,6 +8,8 @@
         const actions = document.querySelector('.actions');
         if (!actions) return;
 
+        if (document.getElementById('auth-header-container')) return;
+
         // Cria o container do botão de autenticação
         const authContainer = document.createElement('div');
         authContainer.id = 'auth-header-container';
@@ -77,6 +79,16 @@
                         window.location.reload();
                     });
                 });
+
+                const toggle = authContainer.querySelector('.btn-header-user');
+                const dropdown = authContainer.querySelector('.user-header-dropdown-menu');
+                if (toggle && dropdown) {
+                    toggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropdown.classList.toggle('open');
+                    });
+                }
             } else {
                 // Usuário logado, mas não é o editor → Botão de usuário simples
                 authContainer.innerHTML = `
@@ -105,6 +117,25 @@
                         window.location.reload();
                     });
                 });
+
+                const toggle = authContainer.querySelector('.btn-header-user');
+                const dropdown = authContainer.querySelector('.user-header-dropdown-menu');
+                if (toggle && dropdown) {
+                    toggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropdown.classList.toggle('open');
+                    });
+                }
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            const openMenu = document.querySelector('.user-header-dropdown-menu.open');
+            if (!openMenu) return;
+            const container = openMenu.closest('.user-header-dropdown');
+            if (container && !container.contains(e.target)) {
+                openMenu.classList.remove('open');
             }
         });
     }

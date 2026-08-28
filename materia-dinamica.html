@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -155,6 +155,7 @@
 
 <!-- SDK do Firebase (compat v8) -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 <script src="js/firebase-config.js"></script>
 <script src="js/main.js"></script>
@@ -169,28 +170,36 @@
         const errorDiv = document.getElementById('error-container');
         const contentDiv = document.getElementById('article-content');
 
-        if (!id || typeof db === 'undefined') {
+        const fail = (message) => {
+            console.error(message);
             loadingDiv.style.display = 'none';
             errorDiv.style.display = 'block';
+        };
+
+        if (!id || typeof db === 'undefined') {
+            fail('Matéria dinâmica sem ID ou Firebase indisponível.');
             return;
         }
 
         db.collection('materias').doc(id).get()
             .then(doc => {
                 if (!doc.exists) {
-                    loadingDiv.style.display = 'none';
-                    errorDiv.style.display = 'block';
+                    fail('Documento da matéria não encontrado.');
                     return;
                 }
 
                 const data = doc.data();
+                if (!data || !data.title) {
+                    fail('Documento da matéria veio vazio ou incompleto.');
+                    return;
+                }
                 
                 // Set page titles and metadata
                 document.title = `${data.title} — G.R.U Notícias`;
                 document.getElementById('article-title').textContent = data.title;
 
                 // Category Configuration
-                const cat = data.category ? data.category.toLowerCase() : 'tecnologia';
+                const cat = String(data.category || 'tecnologia').toLowerCase();
                 const badgeText = data.badge || 'Tecnologia';
                 document.getElementById('meta-category-name').textContent = `G.R.U ${badgeText}`;
                 
@@ -224,6 +233,10 @@
                     catIcon = '<i class="fa-solid fa-futbol"></i>';
                     backUrl = 'esportes.html';
                     backLabel = 'Voltar para Esportes';
+                } else if (cat === 'politica' || cat === 'política') {
+                    catIcon = '<i class="fa-solid fa-landmark"></i>';
+                    backUrl = 'politica.html';
+                    backLabel = 'Voltar para Política';
                 }
 
                 iconContainer.innerHTML = catIcon;
@@ -249,7 +262,7 @@
 
                 // Image Rendering
                 const imageWrapper = document.getElementById('image-wrapper');
-                if (data.imageUrl && data.imageUrl.trim() !== '') {
+                if (typeof data.imageUrl === 'string' && data.imageUrl.trim() !== '') {
                     imageWrapper.innerHTML = `
                         <img src="${data.imageUrl}" alt="${data.title}" style="width:100%; max-height:420px; object-fit:cover; border-radius:var(--radius-lg); margin:20px 0;">
                     `;
@@ -262,7 +275,7 @@
                 }
 
                 // Highlight Block
-                if (data.highlight && data.highlight.trim() !== '') {
+                if (typeof data.highlight === 'string' && data.highlight.trim() !== '') {
                     document.getElementById('article-highlight-box').style.display = 'block';
                     document.getElementById('article-highlight-text').textContent = data.highlight;
                 }
@@ -271,8 +284,7 @@
                 const bodyContainer = document.getElementById('article-body-paragraphs');
                 bodyContainer.innerHTML = '';
                 
-                if (data.content) {
-                    // Split content by line breaks or handle paragraphs
+                if (typeof data.content === 'string' && data.content.trim() !== '') {
                     const paragraphs = data.content.split('\n');
                     paragraphs.forEach(pText => {
                         if (pText.trim() !== '') {
@@ -292,11 +304,10 @@
                 contentDiv.style.display = 'block';
             })
             .catch(err => {
-                console.error("Erro ao recuperar matéria do Firestore:", err);
-                loadingDiv.style.display = 'none';
-                errorDiv.style.display = 'block';
+                fail(`Erro ao recuperar matéria do Firestore: ${err.message}`);
             });
     });
 </script>
-</body>
+<script src="js/firebase-loader.js"></script>`r`n<script src="js/auth-header.js"></script>`r`n</body>
 </html>
+

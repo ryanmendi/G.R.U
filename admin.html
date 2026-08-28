@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -103,6 +103,18 @@
             border-radius: 16px;
             padding: 28px;
             box-shadow: var(--shadow-sm);
+        }
+
+        .panel-card--form {
+            position: relative;
+        }
+
+        .panel-card--preview {
+            position: sticky;
+            top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .panel-card h3 {
@@ -228,12 +240,68 @@
             box-shadow: 0 6px 16px rgba(79, 155, 201, 0.3);
         }
 
-        .preview-sticky {
-            position: sticky;
-            top: 24px;
+        .admin-section-divider {
             display: flex;
-            flex-direction: column;
-            gap: 28px;
+            align-items: center;
+            gap: 12px;
+            margin: 6px 0 18px;
+            color: var(--ink-500);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+
+        .admin-section-divider::before,
+        .admin-section-divider::after {
+            content: "";
+            height: 1px;
+            background: var(--line);
+            flex: 1;
+        }
+
+        .materias-toolbar {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr auto;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .materias-toolbar input,
+        .materias-toolbar select {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            background: var(--surface);
+            color: var(--ink-900);
+        }
+
+        .materia-admin-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .btn-mini-admin {
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--ink-700);
+            border-radius: 8px;
+            padding: 7px 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .btn-mini-admin:hover {
+            border-color: var(--sky-500);
+            color: var(--sky-600);
+            background: rgba(79, 155, 201, 0.06);
         }
 
         /* Lista de matérias refinada */
@@ -245,6 +313,7 @@
             border-bottom: 1px solid var(--line);
             border-radius: 10px;
             transition: background 0.2s;
+            gap: 14px;
         }
 
         .materia-admin-item:hover {
@@ -253,6 +322,12 @@
 
         .materia-admin-item .info {
             max-width: 80%;
+        }
+
+        .materia-admin-item .info p {
+            margin: 0;
+            font-size: 12px;
+            color: var(--ink-500);
         }
 
         .materia-admin-item h4 {
@@ -295,6 +370,13 @@
         .btn-delete-admin:hover {
             background: rgba(170, 21, 27, 0.08);
             color: var(--terracotta-600);
+        }
+
+        .materias-list-wrap {
+            background: rgba(79, 155, 201, 0.02);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 18px;
         }
 
         .alert-toast {
@@ -369,7 +451,7 @@
 
     <div class="dashboard-grid">
         <!-- FORMULÁRIO DE PUBLICAÇÃO -->
-        <div class="panel-card">
+        <div class="panel-card panel-card--form">
             <h3><i class="fa-solid fa-file-pen"></i> Redigir Matéria</h3>
             <form id="publish-form">
                 
@@ -400,6 +482,10 @@
                                 <option value="risco">Segurança Digital</option>
                                 <option value="politica">Política</option>
                                 <option value="esportes">Esportes</option>
+                                <option value="copa">Copa do Mundo 2026</option>
+                                <option value="basquete">Basquete</option>
+                                <option value="municipal">Outros Esportes / Municipal</option>
+                                <option value="entretenimento">Entretenimento</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -459,7 +545,7 @@
         </div>
 
         <!-- PRÉ-VISUALIZAÇÃO EM TEMPO REAL E ÚLTIMOS POSTS -->
-        <div class="preview-sticky">
+        <div class="panel-card--preview">
             
             <!-- PRÉ-VISUALIZAÇÃO -->
             <div class="panel-card">
@@ -486,8 +572,27 @@
             <!-- GERENCIAR POSTAGENS -->
             <div class="panel-card">
                 <h3><i class="fa-solid fa-folder-open"></i> Matérias Cadastradas</h3>
-                <div id="materias-list" style="max-height: 350px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
-                    <p style="text-align:center; color:var(--ink-500); padding:20px;">Carregando banco de dados...</p>
+                <div class="materias-toolbar">
+                    <input type="text" id="materias-search" placeholder="Buscar por título...">
+                    <select id="materias-filter">
+                        <option value="all">Todas as categorias</option>
+                        <option value="ia">IA</option>
+                        <option value="inovacao">Inovação</option>
+                        <option value="startups">Startups</option>
+                        <option value="risco">Segurança Digital</option>
+                        <option value="politica">Política</option>
+                        <option value="esportes">Esportes</option>
+                        <option value="copa">Copa</option>
+                        <option value="basquete">Basquete</option>
+                        <option value="municipal">Municipal</option>
+                        <option value="entretenimento">Entretenimento</option>
+                    </select>
+                    <button type="button" class="btn-mini-admin" id="btn-refresh-list"><i class="fa-solid fa-rotate"></i> Atualizar</button>
+                </div>
+                <div class="materias-list-wrap">
+                    <div id="materias-list" style="max-height: 350px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
+                        <p style="text-align:center; color:var(--ink-500); padding:20px;">Carregando banco de dados...</p>
+                    </div>
                 </div>
             </div>
 
@@ -510,6 +615,10 @@
     const successBox = document.getElementById('success-box');
     const materiasListContainer = document.getElementById('materias-list');
     const btnPublishSubmit = document.getElementById('btn-publish-submit');
+    const materiasSearch = document.getElementById('materias-search');
+    const materiasFilter = document.getElementById('materias-filter');
+    const btnRefreshList = document.getElementById('btn-refresh-list');
+    let materiasCacheRendered = [];
 
     // Elementos da Pré-visualização
     const previewTitle = document.getElementById('preview-title');
@@ -608,16 +717,28 @@
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         };
 
+        const localMateria = {
+            ...newMateria,
+            timestampLocal: new Date().toISOString()
+        };
+
         db.collection('materias').add(newMateria)
             .then(() => {
+                try {
+                    const cached = JSON.parse(localStorage.getItem('gru_materias_cache') || '[]');
+                    cached.unshift(localMateria);
+                    localStorage.setItem('gru_materias_cache', JSON.stringify(cached.slice(0, 50)));
+                } catch (cacheErr) {
+                    console.warn('Falha ao salvar cache local:', cacheErr);
+                }
+
                 successBox.style.display = 'flex';
                 publishForm.reset();
                 
                 // Defaults pós reset
                 locInput.value = 'Guarulhos, SP';
-                emojiInput.value = '🤖';
-                badgeInput.value = 'IA · G.R.U';
                 document.getElementById('category').value = 'ia';
+                setCategoryDefaults('ia');
 
                 btnPublishSubmit.disabled = false;
                 btnPublishSubmit.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Publicar Matéria</span>';
@@ -629,6 +750,7 @@
                 }, 4000);
 
                 loadMaterias();
+                window.dispatchEvent(new Event('gru-materias-updated'));
             })
             .catch(err => {
                 console.error("Erro ao cadastrar matéria:", err);
@@ -646,61 +768,113 @@
             .orderBy('timestamp', 'desc')
             .get()
             .then(snapshot => {
-                materiasListContainer.innerHTML = '';
-                if (snapshot.empty) {
-                    materiasListContainer.innerHTML = '<p style="text-align:center; color:var(--ink-500); padding:20px;">Nenhuma notícia cadastrada.</p>';
-                    return;
-                }
-
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    const item = document.createElement('div');
-                    item.className = 'materia-admin-item';
-                    
-                    const dateStr = data.timestamp ? data.timestamp.toDate().toLocaleDateString('pt-BR') : 'Sem data';
-                    const catLabel = (data.category || 'tecnologia').toUpperCase();
-                    const highlightLabel = data.destaque ? '<span style="color:var(--sky-500); font-weight:700;"><i class="fa-solid fa-star"></i> Home</span>' : '';
-
-                    item.innerHTML = `
-                        <div class="info">
-                            <h4>${data.title}</h4>
-                            <div class="meta-badges">
-                                <span class="badge-cat-label">${catLabel}</span>
-                                <span>${dateStr}</span>
-                                ${highlightLabel}
-                            </div>
-                        </div>
-                        <button class="btn-delete-admin" data-id="${doc.id}" title="Deletar matéria permanentemente"><i class="fa-solid fa-trash-can"></i></button>
-                    `;
-                    materiasListContainer.appendChild(item);
-                });
-
-                // Registrar cliques de deletar
-                document.querySelectorAll('.btn-delete-admin').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const mId = btn.getAttribute('data-id');
-                        if (confirm("Tem certeza que deseja excluir esta notícia permanentemente?")) {
-                            db.collection('materias').doc(mId).delete()
-                                .then(() => {
-                                    loadMaterias();
-                                })
-                                .catch(err => {
-                                    alert("Erro ao excluir: " + err.message);
-                                });
-                        }
-                    });
-                });
+                materiasCacheRendered = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                renderMateriasList();
             })
             .catch(err => {
                 console.error("Erro ao ler matérias:", err);
-                materiasListContainer.innerHTML = `<p style="text-align:center; color:var(--terracotta-500); padding:20px;">Erro de carregamento: ${err.message}</p>`;
+                try {
+                    const cached = JSON.parse(localStorage.getItem('gru_materias_cache') || '[]');
+                    if (!cached.length) {
+                        materiasListContainer.innerHTML = `<p style="text-align:center; color:var(--terracotta-500); padding:20px;">Erro de carregamento: ${err.message}</p>`;
+                        return;
+                    }
+                    materiasCacheRendered = cached.map((data, idx) => ({ id: `cache-${idx}`, ...data, _cacheIndex: idx }));
+                    renderMateriasList();
+                } catch (cacheErr) {
+                    materiasListContainer.innerHTML = `<p style="text-align:center; color:var(--terracotta-500); padding:20px;">Erro de carregamento: ${err.message}</p>`;
+                }
             });
     }
 
+    function renderMateriasList() {
+        const query = (materiasSearch.value || '').trim().toLowerCase();
+        const filter = materiasFilter.value || 'all';
+        const items = materiasCacheRendered.filter(data => {
+            const title = (data.title || '').toLowerCase();
+            const category = (data.category || '').toLowerCase();
+            const matchQuery = !query || title.includes(query);
+            const matchCategory = filter === 'all' || category === filter;
+            return matchQuery && matchCategory;
+        });
+
+        materiasListContainer.innerHTML = '';
+        if (!items.length) {
+            materiasListContainer.innerHTML = '<p style="text-align:center; color:var(--ink-500); padding:20px;">Nenhuma notícia encontrada.</p>';
+            return;
+        }
+
+        items.forEach(data => {
+            const item = document.createElement('div');
+            item.className = 'materia-admin-item';
+
+            const dateStr = data.timestamp ? (data.timestamp.toDate ? data.timestamp.toDate().toLocaleDateString('pt-BR') : 'Sem data') : (data.date || (data.timestampLocal ? new Date(data.timestampLocal).toLocaleDateString('pt-BR') : 'Sem data'));
+            const catLabel = (data.category || 'tecnologia').toUpperCase();
+            const highlightLabel = data.destaque ? '<span style="color:var(--sky-500); font-weight:700;"><i class="fa-solid fa-star"></i> Home</span>' : '';
+
+            item.innerHTML = `
+                <div class="info">
+                    <h4>${data.title || 'Sem título'}</h4>
+                    <p>${(data.description || '').slice(0, 110)}</p>
+                    <div class="meta-badges">
+                        <span class="badge-cat-label">${catLabel}</span>
+                        <span>${dateStr}</span>
+                        ${highlightLabel}
+                    </div>
+                </div>
+                <div class="materia-admin-actions">
+                    <button class="btn-mini-admin" data-open-id="${data.id}"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir</button>
+                    <button class="btn-mini-admin" data-copy-id="${data.id}"><i class="fa-solid fa-copy"></i> Copiar</button>
+                    <button class="btn-delete-admin" data-id="${data.id}" ${data._cacheIndex !== undefined ? 'data-cache-index="'+data._cacheIndex+'"' : ''} title="Deletar matéria permanentemente"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            `;
+            materiasListContainer.appendChild(item);
+        });
+
+        document.querySelectorAll('[data-open-id]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.open(`materia-dinamica.html?id=${btn.getAttribute('data-open-id')}`, '_blank');
+            });
+        });
+
+        document.querySelectorAll('[data-copy-id]').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                await navigator.clipboard.writeText(`${window.location.origin}/materia-dinamica.html?id=${btn.getAttribute('data-copy-id')}`);
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado';
+                setTimeout(() => btn.innerHTML = '<i class="fa-solid fa-copy"></i> Copiar', 1200);
+            });
+        });
+
+        document.querySelectorAll('.btn-delete-admin').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const mId = btn.getAttribute('data-id');
+                if (!confirm("Tem certeza que deseja excluir esta notícia permanentemente?")) return;
+                if (btn.hasAttribute('data-cache-index')) {
+                    const cacheIndex = Number(btn.getAttribute('data-cache-index'));
+                    const cached = JSON.parse(localStorage.getItem('gru_materias_cache') || '[]');
+                    cached.splice(cacheIndex, 1);
+                    localStorage.setItem('gru_materias_cache', JSON.stringify(cached));
+                    loadMaterias();
+                    return;
+                }
+                db.collection('materias').doc(mId).delete().then(loadMaterias).catch(err => alert("Erro ao excluir: " + err.message));
+            });
+        });
+    }
+
+    window.addEventListener('gru-materias-updated', loadMaterias);
+
     // Gerenciar defaults de badge/emoji no change da categoria
     document.getElementById('category').addEventListener('change', (e) => {
-        const cat = e.target.value;
-        
+        setCategoryDefaults(e.target.value);
+        updatePreview();
+    });
+
+    materiasSearch.addEventListener('input', renderMateriasList);
+    materiasFilter.addEventListener('change', renderMateriasList);
+    btnRefreshList.addEventListener('click', loadMaterias);
+
+    function setCategoryDefaults(cat) {
         if (cat === 'ia') {
             badgeInput.value = 'IA · G.R.U';
             emojiInput.value = '🤖';
@@ -719,12 +893,27 @@
         } else if (cat === 'esportes') {
             badgeInput.value = 'Esportes';
             emojiInput.value = '⚽';
+        } else if (cat === 'copa') {
+            badgeInput.value = 'Copa 2026';
+            emojiInput.value = '🏆';
+        } else if (cat === 'basquete') {
+            badgeInput.value = 'Basquete';
+            emojiInput.value = '🏀';
+        } else if (cat === 'municipal') {
+            badgeInput.value = 'Municipal';
+            emojiInput.value = '🏅';
+        } else if (cat === 'entretenimento') {
+            badgeInput.value = 'Entretenimento';
+            emojiInput.value = '🎬';
         }
-        updatePreview();
-    });
+    }
 
     // Carrega o preview padrão
     updatePreview();
 </script>
+    <script src="js/firebase-loader.js"></script>
+    <script src="js/auth-header.js"></script>
 </body>
 </html>
+
+

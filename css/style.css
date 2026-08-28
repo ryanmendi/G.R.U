@@ -486,6 +486,10 @@ nav#menu > a:hover,
     display: block;
 }
 
+.user-header-dropdown-menu.open {
+    display: block;
+}
+
 .user-header-dropdown-menu a,
 .user-header-dropdown-menu button {
     display: flex;
@@ -538,6 +542,25 @@ nav#menu > a:hover,
 
 .user-header-dropdown-menu .logout-btn {
     color: var(--terracotta-500) !important;
+}
+
+@media (max-width: 900px) {
+    .btn-header-login,
+    .btn-header-user {
+        padding: 8px 12px;
+        font-size: 12.5px;
+    }
+
+    .btn-header-login span,
+    .btn-header-user span {
+        display: inline-block;
+    }
+
+    .user-header-dropdown-menu {
+        right: auto;
+        left: 0;
+        min-width: 220px;
+    }
 }
 
 /* RESPONSIVO HEADER */
@@ -1836,6 +1859,12 @@ canvas {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.materias-grid .materia-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .materia-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
@@ -1859,10 +1888,16 @@ canvas {
 
 .materia-body {
     padding: 16px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
 }
 
 .materia-body .badge {
     margin-bottom: 10px;
+    align-self: flex-start;
+    width: fit-content;
 }
 
 .materia-body h3 {
@@ -1875,7 +1910,7 @@ canvas {
     font-size: 14px;
     color: var(--ink-500);
     line-height: 1.6;
-    margin-bottom: 14px;
+    margin-bottom: 0;
 }
 
 .materia-meta {

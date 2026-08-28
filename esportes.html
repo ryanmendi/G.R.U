@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -129,12 +129,12 @@
 <!-- ÚNICA MATÉRIA -->
 <div class="copa-section">
     <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matéria em destaque</h2>
-    <div style="max-width:620px;">
-        <a href="materia-espanha-campea.html" class="materia-card" style="display:block;">
-            <img src="img/espanha-campea-copa-2026-scaled-e1784502419743.jpg" alt="Espanha bicampeã da Copa do Mundo 2026 - futebol" style="width:100%;height:220px;object-fit:cover;border-radius:var(--radius-md) var(--radius-md) 0 0;">
+    <div class="materias-grid">
+        <a href="materia-espanha-campea.html" class="materia-card">
+            <img src="img/espanha-campea-copa-2026-scaled-e1784502419743.jpg" alt="Espanha bicampeã da Copa do Mundo 2026 - futebol" class="materia-img">
             <div class="materia-body">
                 <span class="badge">Copa 2026 · Campeã</span>
-                <h3 style="font-size:20px;margin:12px 0 10px;">Espanha é bicampeã! Ferran Torres decide na prorrogação e elimina Argentina na final</h3>
+                <h3>Espanha é bicampeã! Ferran Torres decide na prorrogação e elimina Argentina na final</h3>
                 <p>Com gol de Ferran Torres aos 106 minutos, a Espanha derrotou a Argentina por 1×0 no MetLife Stadium e conquistou o segundo título mundial da história. A final marcou a despedida de Lionel Messi das Copas do Mundo.</p>
                 <div class="materia-meta">
                     <i class="fa-regular fa-calendar"></i> 19 jul. 2026
@@ -194,5 +194,13 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/chat-widget.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firebase-loader.js"></script>
+    <script src="js/auth-header.js"></script>
 </body>
 </html>
+
+

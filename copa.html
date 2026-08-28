@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -673,12 +673,12 @@
 <!-- ===== ÚNICA MATÉRIA ===== -->
 <section class="copa-section" id="materia" style="padding-bottom:56px;">
     <h2 class="copa-section-title"><i class="fa-solid fa-newspaper" style="color:var(--terracotta-500)"></i> Matéria</h2>
-    <div style="max-width:680px;">
-        <a href="materia-espanha-campea.html" class="materia-card" style="display:block;">
+    <div class="materias-grid">
+        <a href="materia-espanha-campea.html" class="materia-card">
             <img src="img/espanha-campea-copa-2026-scaled-e1784502419743.jpg" alt="Espanha campeã" class="materia-img">
             <div class="materia-body">
                 <span class="badge">Copa 2026 · Campeã</span>
-                <h3 style="font-size:21px;margin:14px 0 10px;">Espanha é bicampeã mundial! Ferran Torres decide na prorrogação e elimina Argentina</h3>
+                <h3>Espanha é bicampeã mundial! Ferran Torres decide na prorrogação e elimina Argentina</h3>
                 <p>A Fúria venceu a Argentina por 1×0 no MetLife Stadium, em Nova Jersey, com gol de Ferran Torres no segundo tempo da prorrogação, e conquista seu segundo título de Copa do Mundo da história.</p>
                 <div class="materia-meta"><i class="fa-regular fa-calendar"></i> 19 jul. 2026 &nbsp;•&nbsp; <i class="fa-solid fa-location-dot"></i> Nova Jersey, EUA</div>
             </div>
@@ -753,5 +753,13 @@
     }, { passive: true });
 </script>
     <script src="js/chat-widget.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firebase-loader.js"></script>
+    <script src="js/auth-header.js"></script>
 </body>
 </html>
+
+

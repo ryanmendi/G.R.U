@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -83,53 +83,55 @@
         <p>Fique por dentro das novidades culturais de Guarulhos e divirta-se com nosso jogo.</p>
     </div>
 
-    <div class="page-content">
-        <div class="cards">
-
-            <!-- CARD NOTÍCIA -->
-            <div class="card">
-                <img src="img/homemAranha4.jpg" alt="Homem-Aranha 4">
-                <div class="card-content">
-                    <span>Entretenimento</span>
-                    <h3>Homem-Aranha 4: </h3>
+    <div class="page-content" style="padding-top: 12px;">
+        <div class="materias-grid">
+            <a href="homemAranha.html" class="materia-card">
+                <img src="img/homemAranha4.jpg" alt="Homem-Aranha 4" class="materia-img">
+                <div class="materia-body">
+                    <span class="badge">Entretenimento</span>
+                    <h3>Homem-Aranha 4</h3>
                     <p>
-                        O aguardado filme "Homem-Aranha 4" promete trazer uma nova aventura do herói aracnídeo, com
-                        efeitos visuais impressionantes e uma trama envolvente que vai prender a atenção dos fãs.
+                        O aguardado filme promete trazer uma nova aventura do herói aracnídeo, com efeitos visuais
+                        impressionantes e uma trama envolvente que vai prender a atenção dos fãs.
                     </p>
-                    <a href="homemAranha.html" class="btn">Ler notícia <i class="fa-solid fa-arrow-right"></i></a>
+                    <div class="materia-meta">
+                        <i class="fa-regular fa-calendar"></i> 2026
+                    </div>
+                    <span class="btn" style="align-self:flex-start;">Ler notícia <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
-            </div>
+            </a>
 
-            <!-- CARD JOGO -->
-            <div class="card">
-                <img src="img/nxc11C.png" alt="Jogo Flappy Bird">
-                <div class="card-content">
-                    <span>Game</span>
+            <a href="flappy.html" class="materia-card">
+                <img src="img/nxc11C.png" alt="Jogo Flappy Bird" class="materia-img">
+                <div class="materia-body">
+                    <span class="badge">Game</span>
                     <h3>Jogue agora: Flappy Bird</h3>
                     <p>
                         Jogue neste momento o jogo Flappy Bird, onde o desafio é passar pelos canos e sobreviver.
                         Teste seu reflexo e tente alcançar a maior pontuação possível.
                     </p>
-                    <a href="flappy.html" class="btn">Abrir jogo <i class="fa-solid fa-gamepad"></i></a>
+                    <div class="materia-meta">
+                        <i class="fa-regular fa-calendar"></i> Jogo interativo
+                    </div>
+                    <span class="btn" style="align-self:flex-start;">Abrir jogo <i class="fa-solid fa-gamepad"></i></span>
                 </div>
-            </div>
+            </a>
 
-                        <div class="card">
-                <img src="img/rodeio.jpg" alt="Itaquá Rodeio Fest 2026">
-                <div class="card-content">
-                    <span>Entretenimento</span>
+            <a href="rodeio.html" class="materia-card">
+                <img src="img/rodeio.jpg" alt="Itaquá Rodeio Fest 2026" class="materia-img">
+                <div class="materia-body">
+                    <span class="badge">Entretenimento</span>
                     <h3>Itaquá Rodeio Fest 2026</h3>
                     <p>
                         Tradição, música e muita diversão em Itaquaquecetuba. O Itaquá Rodeio Fest já faz parte do
                         calendário de grandes eventos da cidade.
-                        Prepare-se para curtir shows, competições e uma experiência única no mundo do rodeio.
                     </p>
-                    <a href="rodeio.html" class="btn">Ler notícia <i class="fa-solid fa-arrow-right"></i></a>
+                    <div class="materia-meta">
+                        <i class="fa-regular fa-calendar"></i> 2026
+                    </div>
+                    <span class="btn" style="align-self:flex-start;">Ler notícia <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
-            </div>
-
-
-            
+            </a>
         </div>
     </div>
 
@@ -180,8 +182,15 @@
     <button id="topBtn" onclick="scrollToTop()" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firebase-loader.js"></script>
+    <script src="js/auth-header.js"></script>
     <script src="js/main.js"></script>
     <script src="js/chat-widget.js" defer></script>
 </body>
 
 </html>
+

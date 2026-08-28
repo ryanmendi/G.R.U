@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof db === 'undefined') return;
 
-    // Carregamento para páginas de editorias (ia, inovacao, startups, risco, tecnologia)
+    // Carregamento para páginas de editorias
     if (materiasGrid) {
         db.collection('materias')
             .orderBy('timestamp', 'asc') // Busca em ordem crescente (mais antiga primeiro) para que a inserção com prepending posicione a mais recente no topo
@@ -31,6 +31,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         shouldShow = true;
                     } else if (pageName === 'risco.html' && cat === 'risco') {
                         shouldShow = true;
+                    } else if (pageName === 'politica.html' || pageName === 'eleicoes.html') {
+                        if (['politica', 'política', 'eleicoes', 'eleições', 'guarulhos'].includes(cat)) {
+                            shouldShow = true;
+                        }
+                    } else if (pageName === 'esportes.html') {
+                        if (['esportes', 'basquete', 'municipal'].includes(cat)) {
+                            shouldShow = true;
+                        }
+                    } else if (pageName === 'copa.html' && cat === 'copa') {
+                        shouldShow = true;
+                    } else if (pageName === 'basquete.html' && cat === 'basquete') {
+                        shouldShow = true;
+                    } else if (pageName === 'outros-esportes.html' && cat === 'municipal') {
+                        shouldShow = true;
+                    } else if (pageName === 'entretenimento.html' && cat === 'entretenimento') {
+                        shouldShow = true;
                     }
 
                     if (shouldShow) {
@@ -38,10 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         card.href = `materia-dinamica.html?id=${doc.id}`;
                         card.className = 'materia-card materia-card-dynamic';
                         
-                        const badgeText = data.badge || 'Tecnologia';
+                        const badgeText = data.badge || (
+                            pageName === 'politica.html' || pageName === 'eleicoes.html' ? 'Política' :
+                            pageName === 'copa.html' ? 'Copa 2026' :
+                            pageName === 'basquete.html' ? 'Basquete' :
+                            pageName === 'outros-esportes.html' ? 'Municipal' :
+                            pageName === 'entretenimento.html' ? 'Entretenimento' :
+                            pageName === 'esportes.html' ? 'Esportes' :
+                            'Tecnologia'
+                        );
                         
                         let imgHtml = '';
-                        if (data.imageUrl && data.imageUrl.trim() !== '') {
+                        if (typeof data.imageUrl === 'string' && data.imageUrl.trim() !== '') {
                             imgHtml = `<img src="${data.imageUrl}" alt="${data.title}" class="materia-img">`;
                         } else {
                             imgHtml = `<div class="materia-img-placeholder">${data.placeholderEmoji || '📰'}</div>`;
@@ -93,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.className = 'news-card news-card-dynamic';
 
                     let imgHtml = '';
-                    if (data.imageUrl && data.imageUrl.trim() !== '') {
+                    if (typeof data.imageUrl === 'string' && data.imageUrl.trim() !== '') {
                         imgHtml = `<img src="${data.imageUrl}" alt="${data.title}">`;
                     } else {
                         imgHtml = `
